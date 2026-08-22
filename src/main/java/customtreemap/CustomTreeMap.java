@@ -635,13 +635,13 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
 
         private K getFirstKeyOrNull() {
             if (m.root == null) return null;
-            K k = usesFromBound ? (fromInclusive ? m.ceilingKey(fromKey) : m.higherKey(fromKey)) : (m.root == null ? null : m.firstKey());
+            K k = usesFromBound ? fromInclusive ? m.ceilingKey(fromKey) : m.higherKey(fromKey) : m.firstKey();
             return (k != null && inRange(k)) ? k : null;
         }
 
         private K getLastKeyOrNull() {
             if (m.root == null) return null;
-            K k = usesToBound ? (toInclusive ? m.floorKey(toKey) : m.lowerKey(toKey)) : (m.root == null ? null : m.lastKey());
+            K k = usesToBound ? toInclusive ? m.floorKey(toKey) : m.lowerKey(toKey) : m.lastKey();
             return (k != null && inRange(k)) ? k : null;
         }
 
@@ -895,13 +895,13 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
 
         private K getFirstKeyOrNull() {
             if (m.root == null) return null;
-            K k = usesToBound ? (toInclusive ? m.floorKey(toKey) : m.lowerKey(toKey)) : (m.root == null ? null : m.lastKey());
+            K k = usesToBound ? toInclusive ? m.floorKey(toKey) : m.lowerKey(toKey) : m.lastKey();
             return (k != null && inRange(k)) ? k : null;
         }
 
         private K getLastKeyOrNull() {
             if (m.root == null) return null;
-            K k = usesFromBound ? (fromInclusive ? m.ceilingKey(fromKey) : m.higherKey(fromKey)) : (m.root == null ? null : m.firstKey());
+            K k = usesFromBound ? fromInclusive ? m.ceilingKey(fromKey) : m.higherKey(fromKey) : m.firstKey();
             return (k != null && inRange(k)) ? k : null;
         }
 

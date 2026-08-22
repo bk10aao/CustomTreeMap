@@ -30,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@DisplayName("RedBlackTreeMap Test Suite")
+@DisplayName("CustomTreeMap Test Suite")
 class CustomTreeMapTest {
 
     private CustomTreeMap<Integer, String> map;
