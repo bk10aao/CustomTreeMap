@@ -225,9 +225,12 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
         do {
             parent = t;
             cmp = compare(key, t.key);
-            if (cmp < 0) t = t.left;
-            else if (cmp > 0) t = t.right;
-            else return t.setValue(value);
+            if (cmp < 0)
+                t = t.left;
+            else if (cmp > 0)
+                t = t.right;
+            else
+                return t.setValue(value);
         } while (t != null);
         Node<K, V> e = new Node<>(key, value, parent);
         e.color = RED;
