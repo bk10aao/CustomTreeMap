@@ -1719,8 +1719,8 @@ class CustomTreeMapTest {
     @DisplayName("Should throw NullPointerException when requesting keys on an empty submap view")
     void testEmptySubMapBoundaryMethodsThrow() {
         NavigableMap<Integer, String> head = map.headMap(5, true);
-        assertThrows(NullPointerException.class, head::firstKey);
-        assertThrows(NullPointerException.class, head::lastKey);
+        assertThrows(NoSuchElementException.class, head::firstKey);
+        assertThrows(NoSuchElementException.class, head::lastKey);
     }
 
     @Test
