@@ -557,7 +557,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
         }
     }
 
-    private static <K, V> void setColor(final Node<K, V> p, boolean c) {
+    private static <K, V> void setColor(final Node<K, V> p, final boolean c) {
         if (p != null)
             p.color = c;
     }
@@ -588,15 +588,15 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
             super(map, usesFromBound, fromKey, fromInclusive, usesToBound, toKey, toInclusive);
         }
 
-        K absCeiling(K key) {
+        K absCeiling(final K key) {
             return m.ceilingKey(key);
         }
 
-        K absFloor(K key) {
+        K absFloor(final K key) {
             return m.floorKey(key);
         }
 
-        K absHigher(K key) {
+        K absHigher(final K key) {
             return m.higherKey(key);
         }
 
@@ -633,7 +633,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
             return c < 0 || (c == 0 && (!fromInclusive && inclusive));
         }
 
-        Node<K, V> stepNode(Node<K, V> node) {
+        public Node<K, V> stepNode(final Node<K, V> node) {
             return m.successor(node);
         }
 
@@ -648,7 +648,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
             return new AscendingSubMap<>(m, true, fromKey, fromInclusive, true, toKey, toInclusive);
         }
 
-        Node<K, V> subMapNode(boolean isFirst) {
+        public Node<K, V> subMapNode(final boolean isFirst) {
             if (m.root == null) return null;
             return isFirst ? (usesFromBound ? m.getCeilingNode(fromKey, fromInclusive) : m.getFirstNode())
                     : (usesToBound ? m.getFloorNode(toKey, toInclusive) : m.getLastNode());
@@ -670,19 +670,19 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
             super(map, usesFromBound, fromKey, fromInclusive, usesToBound, toKey, toInclusive);
         }
 
-        K absCeiling(K key) {
+        K absCeiling(final K key) {
             return m.floorKey(key);
         }
 
-        K absFloor(K key) {
+        K absFloor(final K key) {
             return m.ceilingKey(key);
         }
 
-        K absHigher(K key) {
+        K absHigher(final K key) {
             return m.lowerKey(key);
         }
 
-        K absLower(K key) {
+        K absLower(final K key) {
             return m.higherKey(key);
         }
 
@@ -716,7 +716,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
             return c < 0 || (c == 0 && (!toInclusive && inclusive));
         }
 
-        Node<K, V> stepNode(Node<K, V> node) {
+        Node<K, V> stepNode(final Node<K, V> node) {
             return m.predecessor(node);
         }
 
@@ -732,7 +732,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
             return new DescendingSubMap<>(m, true, fromKey, fromInclusive, true, toKey, toInclusive);
         }
 
-        Node<K, V> subMapNode(boolean isFirst) {
+        Node<K, V> subMapNode(final boolean isFirst) {
             if (m.root == null)
                 return null;
             return isFirst
@@ -751,7 +751,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
     private static class KeySet<E> extends AbstractSet<E> implements NavigableSet<E> {
         private final NavigableMap<E, ?> map;
 
-        KeySet(NavigableMap<E, ?> map) {
+        KeySet(final NavigableMap<E, ?> map) {
             this.map = map;
         }
 
@@ -767,7 +767,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
             return map.comparator();
         }
 
-        public boolean contains(Object o) {
+        public boolean contains(final Object o) {
             return map.containsKey(o);
         }
 
@@ -787,11 +787,11 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
             return map.floorKey(item);
         }
 
-        public SortedSet<E> headSet(E toElement) {
+        public SortedSet<E> headSet(final E toElement) {
             return headSet(toElement, false);
         }
 
-        public NavigableSet<E> headSet(E toElement, boolean inclusive) {
+        public NavigableSet<E> headSet(final E toElement, final boolean inclusive) {
             return map.headMap(toElement, inclusive).navigableKeySet();
         }
 
@@ -834,7 +834,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
             return e == null ? null : e.getKey();
         }
 
-        public boolean remove(Object o) {
+        public boolean remove(final Object o) {
             return map.remove(o) != null;
         }
 
@@ -842,7 +842,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
             return map.size();
         }
 
-        public SortedSet<E> subSet(E fromElement, E toElement) {
+        public SortedSet<E> subSet(final E fromElement, final E toElement) {
             return subSet(fromElement, true, toElement, false);
         }
 
@@ -850,11 +850,11 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
             return map.subMap(fromElement, fromInclusive, toElement, toInclusive).navigableKeySet();
         }
 
-        public SortedSet<E> tailSet(E fromElement) {
+        public SortedSet<E> tailSet(final E fromElement) {
             return tailSet(fromElement, true);
         }
 
-        public NavigableSet<E> tailSet(E fromElement, boolean inclusive) {
+        public NavigableSet<E> tailSet(final E fromElement, final boolean inclusive) {
             return map.tailMap(fromElement, inclusive).navigableKeySet();
         }
     }
