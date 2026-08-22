@@ -23,6 +23,7 @@ import java.util.TreeMap;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -1355,7 +1356,7 @@ class CustomTreeMapTest {
         map.put(10, "Ten");
         map.put(20, "Twenty");
 
-        assertThat(map.keySet().containsAll(List.of(10, 20, 30)));
+        assertTrue(map.keySet().containsAll(List.of(10, 20, 30)));
     }
 
     @Test
@@ -1404,7 +1405,7 @@ class CustomTreeMapTest {
         map.put(30, "Thirty");
 
         NavigableMap<Integer, String> tail = map.tailMap(20, false);
-        assertTrue(tail.keySet().contains(30));
+        assertTrue(tail.containsKey(30));
     }
 
     @Test
@@ -1844,4 +1845,144 @@ class CustomTreeMapTest {
     void thePutWithNullKey_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new CustomTreeMap<>().put(null, 10));
     }
+
+    @Test
+    @DisplayName("Should return keys in reverse natural order")
+    void testBasicOrdering() {
+        map = new CustomTreeMap<>();
+        map.put(10, "Ten");
+        map.put(20, "Twenty");
+        map.put(30, "Thirty");
+        map.put(40, "Forty");
+        map.put(50, "Fifty");
+        NavigableSet<Integer> descendingKeys = map.descendingKeySet();
+
+        assertAll(
+                () -> assertEquals(50, descendingKeys.first()),
+                () -> assertEquals(10, descendingKeys.last()),
+                () -> assertEquals(5, descendingKeys.size())
+        );
+    }
+
+    @Test
+    @DisplayName("Should correctly iterate in descending order")
+    void testIterator() {
+        map = new CustomTreeMap<>();
+        map.put(10, "Ten");
+        map.put(20, "Twenty");
+        map.put(30, "Thirty");
+        map.put(40, "Forty");
+        map.put(50, "Fifty");
+        NavigableSet<Integer> descendingKeys = map.descendingKeySet();
+        Iterator<Integer> it = descendingKeys.iterator();
+
+        assertTrue(it.hasNext());
+        assertEquals(50, it.next());
+        assertEquals(40, it.next());
+        assertEquals(30, it.next());
+        assertEquals(20, it.next());
+        assertEquals(10, it.next());
+        assertFalse(it.hasNext());
+        assertThrows(NoSuchElementException.class, it::next);
+    }
+
+    @Test
+    @DisplayName("Should invert directional navigation methods (lower, floor, ceiling, higher)")
+    void testInvertedDirectionalLookups() {
+        map = new CustomTreeMap<>();
+        map.put(10, "Ten");
+        map.put(20, "Twenty");
+        map.put(30, "Thirty");
+        map.put(40, "Forty");
+        map.put(50, "Fifty");
+        NavigableSet<Integer> descendingKeys = map.descendingKeySet();
+
+        assertAll(
+                () -> assertEquals(40, descendingKeys.lower(30)),
+                () -> assertEquals(30, descendingKeys.floor(30)),
+                () -> assertEquals(30, descendingKeys.ceiling(30)),
+                () -> assertEquals(20, descendingKeys.higher(30))
+        );
+    }
+
+    @Test
+    @DisplayName("Should dynamically reflect changes made to the underlying map (Write-Through)")
+    void testDynamicViewBinding() {
+        map.put(10, "Ten");
+        map.put(20, "Twenty");
+        map.put(30, "Thirty");
+        map.put(40, "Forty");
+        map.put(50, "Fifty");
+        NavigableSet<Integer> descendingKeys = map.descendingKeySet();
+
+        map.put(60, "Sixty");
+        assertEquals(60, descendingKeys.first());
+
+        map.remove(10);
+        assertEquals(20, descendingKeys.last());
+        assertEquals(5, descendingKeys.size());
+    }
+
+    @Test
+    @DisplayName("Should mutate underlying map when elements are removed from descendingKeySet")
+    void testMutatingRemovals() {
+        map = new CustomTreeMap<>();
+        map.put(10, "Ten");
+        map.put(20, "Twenty");
+        map.put(30, "Thirty");
+        map.put(40, "Forty");
+        map.put(50, "Fifty");
+        NavigableSet<Integer> descendingKeys = map.descendingKeySet();
+
+        assertTrue(descendingKeys.remove(30));
+        assertFalse(map.containsKey(30));
+        assertEquals(4, map.size());
+
+        Iterator<Integer> it = descendingKeys.iterator();
+        assertEquals(50, it.next());
+        it.remove();
+
+        assertFalse(map.containsKey(50));
+        assertEquals(3, map.size());
+    }
+
+
+    @Test
+    @DisplayName("subSet() should slice based on descending order")
+    void testSubSetRanges() {
+        map = new CustomTreeMap<>();
+        map.put(10, "Ten");
+        map.put(20, "Twenty");
+        map.put(30, "Thirty");
+        map.put(40, "Forty");
+        map.put(50, "Fifty");
+        NavigableSet<Integer> descendingKeys = map.descendingKeySet();
+
+        NavigableSet<Integer> sub = descendingKeys.subSet(40, true, 20, false);
+
+        assertEquals(40, sub.first());
+        assertEquals(30, sub.last());
+        assertFalse(sub.contains(20));
+    }
+
+    @Test
+    @DisplayName("headSet() and tailSet() should respect inverted orientation")
+    void testHeadAndTailSet() {
+        map = new CustomTreeMap<>();
+        map.put(10, "Ten");
+        map.put(20, "Twenty");
+        map.put(30, "Thirty");
+        map.put(40, "Forty");
+        map.put(50, "Fifty");
+        NavigableSet<Integer> descendingKeys = map.descendingKeySet();
+
+        NavigableSet<Integer> head = descendingKeys.headSet(30, false);
+        assertEquals(50, head.first());
+        assertEquals(40, head.last());
+
+        NavigableSet<Integer> tail = descendingKeys.tailSet(30, true);
+        assertEquals(30, tail.first());
+        assertEquals(10, tail.last());
+    }
+
 }

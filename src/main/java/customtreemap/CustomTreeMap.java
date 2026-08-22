@@ -310,7 +310,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
 
         public NavigableMap<K, V> headMap(final K toKey, final boolean inclusive) {
             requireNonNull(toKey);
-            if (inRange(toKey, inclusive) && isTooHigh(toKey, inclusive))
+            if (!inRange(toKey, inclusive))
                 throw new IllegalArgumentException();
             return new AscendingSubMap<>(m, usesFromBound, fromKey, fromInclusive, true, toKey, inclusive);
         }
@@ -331,17 +331,17 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
             return m.successor(node);
         }
 
-        public NavigableMap<K, V> subMap(final K fromKey, final boolean fromInclusive, final K toKey, final boolean toInclusive) {
+        public NavigableMap<K, V> subMap(final K fromKey, final boolean fromInclusive,
+                                         final K toKey, final boolean toInclusive) {
             requireNonNull(fromKey);
             requireNonNull(toKey);
-            if (inRange(fromKey, fromInclusive) || inRange(toKey, toInclusive))
+            if (!inRange(fromKey, fromInclusive) || !inRange(toKey, toInclusive))
                 throw new IllegalArgumentException();
             int cmp = m.compare(fromKey, toKey);
             if (cmp > 0 || (cmp == 0 && (!fromInclusive || !toInclusive)))
                 throw new IllegalArgumentException();
             return new AscendingSubMap<>(m, true, fromKey, fromInclusive, true, toKey, toInclusive);
         }
-
         Node<K, V> subMapNode(boolean isFirst) {
             if (m.root == null) return null;
             return isFirst ? (usesFromBound ? m.getCeilingNode(fromKey, fromInclusive) : m.getFirstNode())
@@ -350,7 +350,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
 
         public NavigableMap<K, V> tailMap(final K fromKey, final boolean inclusive) {
             requireNonNull(fromKey);
-            if (inRange(fromKey, inclusive) && isTooLow(fromKey, inclusive))
+            if (!inRange(fromKey, inclusive))
                 throw new IllegalArgumentException();
             return new AscendingSubMap<>(m, true, fromKey, inclusive, usesToBound, toKey, toInclusive);
         }
@@ -359,7 +359,8 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
     private static class DescendingSubMap<K extends Comparable<K>, V> extends NavigableSubMap<K, V> {
 
         DescendingSubMap(final CustomTreeMap<K, V> map, final boolean usesFromBound, final K fromKey,
-                         final boolean fromInclusive, final boolean usesToBound, final K toKey, final boolean toInclusive) {
+                         final boolean fromInclusive, final boolean usesToBound, final K toKey,
+                         final boolean toInclusive) {
             super(map, usesFromBound, fromKey, fromInclusive, usesToBound, toKey, toInclusive);
         }
 
@@ -394,8 +395,8 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
 
         public NavigableMap<K, V> headMap(final K toKey, final boolean inclusive) {
             requireNonNull(toKey);
-            if (inRange(toKey, inclusive) && isTooLow(toKey, inclusive))
-                throw new IllegalArgumentException();
+            if (!inRange(toKey, inclusive))
+                throw new IllegalArgumentException("toKey out of range");
             return new DescendingSubMap<>(m, usesFromBound, fromKey, fromInclusive, true, toKey, inclusive);
         }
 
@@ -417,10 +418,11 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
             return m.predecessor(node);
         }
 
-        public NavigableMap<K, V> subMap(final K fromKey, final boolean fromInclusive, final K toKey, final boolean toInclusive) {
+        public NavigableMap<K, V> subMap(final K fromKey, final boolean fromInclusive,
+                                         final K toKey, final boolean toInclusive) {
             requireNonNull(fromKey);
             requireNonNull(toKey);
-            if (inRange(fromKey, fromInclusive) || inRange(toKey, toInclusive))
+            if (!inRange(fromKey, fromInclusive) || !inRange(toKey, toInclusive))
                 throw new IllegalArgumentException();
             int cmp = m.compare(fromKey, toKey);
             if (cmp < 0 || (cmp == 0 && (!fromInclusive || !toInclusive)))
@@ -431,14 +433,15 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
         Node<K, V> subMapNode(boolean isFirst) {
             if (m.root == null)
                 return null;
-            return isFirst ? (usesToBound ? m.getFloorNode(toKey, toInclusive) : m.getLastNode())
-                    : (usesFromBound ? m.getCeilingNode(fromKey, fromInclusive) : m.getFirstNode());
+            return isFirst
+                    ? (usesFromBound ? m.getFloorNode(fromKey, fromInclusive) : m.getLastNode())
+                    : (usesToBound   ? m.getCeilingNode(toKey, toInclusive)   : m.getFirstNode());
         }
 
         public NavigableMap<K, V> tailMap(final K fromKey, final boolean inclusive) {
             requireNonNull(fromKey);
-            if (inRange(fromKey, inclusive) && isTooHigh(fromKey, inclusive))
-                throw new IllegalArgumentException();
+            if (!inRange(fromKey, inclusive))
+                throw new IllegalArgumentException("fromKey out of range");
             return new DescendingSubMap<>(m, true, fromKey, inclusive, usesToBound, toKey, toInclusive);
         }
     }
@@ -704,7 +707,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
         }
 
         final boolean inRange(final K key, final boolean inclusive) {
-            return isTooLow(key, inclusive) || isTooHigh(key, inclusive);
+            return !isTooLow(key, inclusive) && !isTooHigh(key, inclusive);
         }
 
         public Entry<K, V> lastEntry() {
