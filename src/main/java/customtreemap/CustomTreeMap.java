@@ -316,13 +316,15 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
         }
 
         boolean isTooHigh(final K key, final boolean inclusive) {
-            if (!usesToBound) return false;
+            if (!usesToBound)
+                return false;
             int c = m.compare(key, toKey);
             return c > 0 || (c == 0 && (!toInclusive && inclusive));
         }
 
         boolean isTooLow(final K key, final boolean inclusive) {
-            if (!usesFromBound) return false;
+            if (!usesFromBound)
+                return false;
             int c = m.compare(key, fromKey);
             return c < 0 || (c == 0 && (!fromInclusive && inclusive));
         }
@@ -331,8 +333,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
             return m.successor(node);
         }
 
-        public NavigableMap<K, V> subMap(final K fromKey, final boolean fromInclusive,
-                                         final K toKey, final boolean toInclusive) {
+        public NavigableMap<K, V> subMap(final K fromKey, final boolean fromInclusive, final K toKey, final boolean toInclusive) {
             requireNonNull(fromKey);
             requireNonNull(toKey);
             if (!inRange(fromKey, fromInclusive) || !inRange(toKey, toInclusive))
@@ -342,6 +343,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
                 throw new IllegalArgumentException();
             return new AscendingSubMap<>(m, true, fromKey, fromInclusive, true, toKey, toInclusive);
         }
+
         Node<K, V> subMapNode(boolean isFirst) {
             if (m.root == null) return null;
             return isFirst ? (usesFromBound ? m.getCeilingNode(fromKey, fromInclusive) : m.getFirstNode())
@@ -364,22 +366,18 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
             super(map, usesFromBound, fromKey, fromInclusive, usesToBound, toKey, toInclusive);
         }
 
-        @Override
         K absCeiling(K key) {
             return m.floorKey(key);
         }
 
-        @Override
         K absFloor(K key) {
             return m.ceilingKey(key);
         }
 
-        @Override
         K absHigher(K key) {
             return m.lowerKey(key);
         }
 
-        @Override
         K absLower(K key) {
             return m.higherKey(key);
         }
@@ -650,9 +648,8 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
                 @Override
                 public int size() {
                     int count = 0;
-                    for (Node<K, V> n = subMapNode(true); n != null && inRange(n.key); n = stepNode(n)) {
+                    for (Node<K, V> n = subMapNode(true); n != null && inRange(n.key); n = stepNode(n))
                         count++;
-                    }
                     return count;
                 }
             };
@@ -1090,9 +1087,9 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
     }
 
     private static <K, V> void setColor(final Node<K, V> p, boolean c) {
-        if (p != null) p.color = c;
+        if (p != null)
+            p.color = c;
     }
-
 
     private Node<K, V> successor(final Node<K, V> t) {
         if (t == null)
