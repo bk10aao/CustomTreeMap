@@ -1530,7 +1530,7 @@ class CustomTreeMapTest {
     }
 
     @Test
-    @DisplayName("Keys outside the original tree boundaries still define valid submap ranges")
+    @DisplayName("Keys outside the original tree boundaries still define valid sub map ranges")
     void subMap_keysOutsideTreeBounds() {
         map.put(10, "Ten");
         map.put(20, "Twenty");
@@ -1630,7 +1630,7 @@ class CustomTreeMapTest {
     }
 
     @Test
-    @DisplayName("Should return empty submap if toKey is less than or equal to lowest key")
+    @DisplayName("Should return empty sub map if toKey is less than or equal to lowest key")
     void testHeadMapExclusiveKeyLessThanAll() {
         NavigableMap<Integer, String> head = map.headMap(10, false);
 
@@ -1703,7 +1703,7 @@ class CustomTreeMapTest {
     }
 
     @Test
-    @DisplayName("Should properly retrieve lowest and highest keys from submap view")
+    @DisplayName("Should properly retrieve lowest and highest keys from sub map view")
     void testSubMapBoundaryMethods() {
         map.put(10, "Ten");
         map.put(20, "Twenty");
@@ -1717,7 +1717,7 @@ class CustomTreeMapTest {
     }
 
     @Test
-    @DisplayName("Should throw NullPointerException when requesting keys on an empty submap view")
+    @DisplayName("Should throw NullPointerException when requesting keys on an empty sub map view")
     void testEmptySubMapBoundaryMethodsThrow() {
         NavigableMap<Integer, String> head = map.headMap(5, true);
         assertThrows(NoSuchElementException.class, head::firstKey);
@@ -1841,7 +1841,7 @@ class CustomTreeMapTest {
     }
 
     @Test
-    @DisplayName("put(key, value) with null key throws NullPointerExceptopn")
+    @DisplayName("put(key, value) with null key throws NullPointerException")
     void thePutWithNullKey_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new CustomTreeMap<>().put(null, 10));
     }
