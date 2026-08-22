@@ -1,4 +1,4 @@
-package RedBlackTree;
+package customtreemap;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -31,14 +31,14 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DisplayName("RedBlackTreeMap Test Suite")
-class RedBlackTreeMapTest {
+class CustomTreeMapTest {
 
-    private RedBlackTreeMap<Integer, String> map;
+    private CustomTreeMap<Integer, String> map;
     private NavigableSet<Integer> keySet;
 
     @BeforeEach
     void setUp() {
-        map = new RedBlackTreeMap<>();
+        map = new CustomTreeMap<>();
         keySet = map.navigableKeySet();
     }
 
@@ -1158,7 +1158,7 @@ class RedBlackTreeMapTest {
     @Test
     @DisplayName("putAll() supports subtype generics (Map<? extends K, ? extends V>)")
     void testPutAllWithSubtypes() {
-        RedBlackTreeMap<Integer, Object> numberMap = new RedBlackTreeMap<>();
+        CustomTreeMap<Integer, Object> numberMap = new CustomTreeMap<>();
 
         Map<Integer, String> specificMap = Map.of(
                 1, "One",
@@ -1192,7 +1192,7 @@ class RedBlackTreeMapTest {
     @Test
     @DisplayName("putAll() correctly imports elements from another SortedMap / map")
     void testPutAllFromSortedMap() {
-        Map<Integer, String> sortedSource = new RedBlackTreeMap<>();
+        Map<Integer, String> sortedSource = new CustomTreeMap<>();
         sortedSource.put(5, "Five");
         sortedSource.put(15, "Fifteen");
         sortedSource.put(25, "TwentyFive");
@@ -1207,7 +1207,7 @@ class RedBlackTreeMapTest {
 
     @Test
     void defaultConstructorShouldInitializeEmptyMapWithNullComparator() {
-        RedBlackTreeMap<String, Integer> map = new RedBlackTreeMap<>();
+        CustomTreeMap<String, Integer> map = new CustomTreeMap<>();
 
         assertTrue(map.isEmpty());
         assertEquals(0, map.size());
@@ -1217,7 +1217,7 @@ class RedBlackTreeMapTest {
     @Test
     void customComparatorConstructorShouldStoreComparatorAndInitializeEmptyMap() {
         Comparator<String> customComparator = Comparator.reverseOrder();
-        RedBlackTreeMap<String, Integer> map = new RedBlackTreeMap<>(customComparator);
+        CustomTreeMap<String, Integer> map = new CustomTreeMap<>(customComparator);
 
         assertTrue(map.isEmpty());
         assertEquals(0, map.size());
@@ -1226,7 +1226,7 @@ class RedBlackTreeMapTest {
 
     @Test
     void customComparatorConstructorShouldAllowNullComparatorForNaturalOrdering() {
-        RedBlackTreeMap<String, Integer> map = new RedBlackTreeMap<>((Comparator<String>) null);
+        CustomTreeMap<String, Integer> map = new CustomTreeMap<>((Comparator<String>) null);
 
         assertTrue(map.isEmpty());
         assertNull(map.comparator());
@@ -1235,7 +1235,7 @@ class RedBlackTreeMapTest {
     @Test
     void mapConstructorShouldPopulateAllEntriesFromGivenMap() {
         Map<String, Integer> inputMap = Map.of("B", 2, "A", 1, "C", 3);
-        RedBlackTreeMap<String, Integer> map = new RedBlackTreeMap<>(inputMap);
+        CustomTreeMap<String, Integer> map = new CustomTreeMap<>(inputMap);
 
         assertEquals(3, map.size());
         assertEquals(1, map.get("A"));
@@ -1246,7 +1246,7 @@ class RedBlackTreeMapTest {
 
     @Test
     void mapConstructorShouldInitializeEmptyMapWhenGivenEmptyMap() {
-        RedBlackTreeMap<String, Integer> map = new RedBlackTreeMap<>(Collections.emptyMap());
+        CustomTreeMap<String, Integer> map = new CustomTreeMap<>(Collections.emptyMap());
 
         assertTrue(map.isEmpty());
         assertEquals(0, map.size());
@@ -1254,7 +1254,7 @@ class RedBlackTreeMapTest {
 
     @Test
     void mapConstructorShouldThrowNullPointerExceptionWhenMapIsNull() {
-        assertThrows(NullPointerException.class, () -> new RedBlackTreeMap<>((Map<String, Integer>) null));
+        assertThrows(NullPointerException.class, () -> new CustomTreeMap<>((Map<String, Integer>) null));
     }
 
     @Test
@@ -1264,7 +1264,7 @@ class RedBlackTreeMapTest {
         inputSortedMap.put("A", 1);
         inputSortedMap.put("B", 2);
 
-        RedBlackTreeMap<String, Integer> map = new RedBlackTreeMap<>(inputSortedMap);
+        CustomTreeMap<String, Integer> map = new CustomTreeMap<>(inputSortedMap);
 
         assertEquals(2, map.size());
         assertEquals(1, map.get("A"));
@@ -1277,7 +1277,7 @@ class RedBlackTreeMapTest {
         SortedMap<String, Integer> inputSortedMap = new TreeMap<>();
         inputSortedMap.put("A", 1);
 
-        RedBlackTreeMap<String, Integer> map = new RedBlackTreeMap<>(inputSortedMap);
+        CustomTreeMap<String, Integer> map = new CustomTreeMap<>(inputSortedMap);
 
         assertEquals(1, map.size());
         assertNull(map.comparator());
@@ -1285,12 +1285,12 @@ class RedBlackTreeMapTest {
 
     @Test
     void sortedMapConstructorShouldThrowNullPointerExceptionWhenSortedMapIsNull() {
-        assertThrows(NullPointerException.class, () -> new RedBlackTreeMap<>((SortedMap<String, Integer>) null));
+        assertThrows(NullPointerException.class, () -> new CustomTreeMap<>((SortedMap<String, Integer>) null));
     }
 
     @Test
     void entrySetSizeShouldReturnZeroForEmptyMap() {
-        RedBlackTreeMap<String, Integer> map = new RedBlackTreeMap<>();
+        CustomTreeMap<String, Integer> map = new CustomTreeMap<>();
         Set<Map.Entry<String, Integer>> entrySet = map.entrySet();
 
         assertEquals(0, entrySet.size());
@@ -1298,7 +1298,7 @@ class RedBlackTreeMapTest {
 
     @Test
     void entrySetSizeShouldReflectNumberOfInsertedEntries() {
-        RedBlackTreeMap<String, Integer> map = new RedBlackTreeMap<>();
+        CustomTreeMap<String, Integer> map = new CustomTreeMap<>();
         map.put("A", 1);
         map.put("B", 2);
         map.put("C", 3);
@@ -1308,7 +1308,7 @@ class RedBlackTreeMapTest {
 
     @Test
     void entrySetSizeShouldNotIncreaseWhenUpdatingExistingKey() {
-        RedBlackTreeMap<String, Integer> map = new RedBlackTreeMap<>();
+        CustomTreeMap<String, Integer> map = new CustomTreeMap<>();
         map.put("A", 1);
         map.put("A", 99);
 
@@ -1317,7 +1317,7 @@ class RedBlackTreeMapTest {
 
     @Test
     void entrySetSizeShouldDecreaseWhenEntryIsRemovedFromMap() {
-        RedBlackTreeMap<String, Integer> map = new RedBlackTreeMap<>();
+        CustomTreeMap<String, Integer> map = new CustomTreeMap<>();
         map.put("A", 1);
         map.put("B", 2);
 
@@ -1328,7 +1328,7 @@ class RedBlackTreeMapTest {
 
     @Test
     void entrySetSizeShouldDynamicallyReflectChangesToOuterMap() {
-        RedBlackTreeMap<String, Integer> map = new RedBlackTreeMap<>();
+        CustomTreeMap<String, Integer> map = new CustomTreeMap<>();
         Set<Map.Entry<String, Integer>> entrySet = map.entrySet();
 
         assertEquals(0, entrySet.size());
@@ -1842,6 +1842,6 @@ class RedBlackTreeMapTest {
     @Test
     @DisplayName("put(key, value) with null key throws NullPointerExceptopn")
     void thePutWithNullKey_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new RedBlackTreeMap<>().put(null, 10));
+        assertThrows(NullPointerException.class, () -> new CustomTreeMap<>().put(null, 10));
     }
 }

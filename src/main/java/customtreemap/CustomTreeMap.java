@@ -1,4 +1,4 @@
-package RedBlackTree;
+package customtreemap;
 
 import java.util.AbstractMap;
 import java.util.AbstractSet;
@@ -14,7 +14,7 @@ import java.util.SortedSet;
 
 import static java.util.Objects.requireNonNull;
 
-public class RedBlackTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V> implements NavigableMap<K, V> {
+public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V> implements NavigableMap<K, V> {
 
     private static final boolean RED = true;
     private static final boolean BLACK = false;
@@ -23,20 +23,20 @@ public class RedBlackTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, 
     private int size = 0;
     private final Comparator<? super K> comparator;
 
-    public RedBlackTreeMap() {
+    public CustomTreeMap() {
         this.comparator = null;
     }
 
-    public RedBlackTreeMap(Comparator<? super K> comparator) {
+    public CustomTreeMap(Comparator<? super K> comparator) {
         this.comparator = comparator;
     }
 
-    public RedBlackTreeMap(Map<? extends K, ? extends V> m) {
+    public CustomTreeMap(Map<? extends K, ? extends V> m) {
         this.comparator = null;
         putAll(m);
     }
 
-    public RedBlackTreeMap(SortedMap<K, ? extends V> m) {
+    public CustomTreeMap(SortedMap<K, ? extends V> m) {
         this.comparator = m.comparator();
         putAll(m);
     }
@@ -570,7 +570,7 @@ public class RedBlackTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, 
     }
 
     private static class AscendingSubMap<K extends Comparable<K>, V> extends AbstractMap<K, V> implements NavigableMap<K, V> {
-        private final RedBlackTreeMap<K, V> m;
+        private final CustomTreeMap<K, V> m;
         private final K fromKey;
         private final boolean fromInclusive;
         private final K toKey;
@@ -578,7 +578,7 @@ public class RedBlackTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, 
         private final boolean usesFromBound;
         private final boolean usesToBound;
 
-        AscendingSubMap(RedBlackTreeMap<K, V> map,
+        AscendingSubMap(CustomTreeMap<K, V> map,
                         boolean usesFromBound, K fromKey, boolean fromInclusive,
                         boolean usesToBound, K toKey, boolean toInclusive) {
             this.m = map;
@@ -832,7 +832,7 @@ public class RedBlackTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, 
     }
 
     private static class DescendingSubMap<K extends Comparable<K>, V> extends AbstractMap<K, V> implements NavigableMap<K, V> {
-        private final RedBlackTreeMap<K, V> m;
+        private final CustomTreeMap<K, V> m;
         private final K fromKey;
         private final boolean fromInclusive;
         private final K toKey;
@@ -840,7 +840,7 @@ public class RedBlackTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, 
         private final boolean usesFromBound;
         private final boolean usesToBound;
 
-        DescendingSubMap(RedBlackTreeMap<K, V> map, boolean usesFromBound, K fromKey, boolean fromInclusive, boolean usesToBound, K toKey, boolean toInclusive) {
+        DescendingSubMap(CustomTreeMap<K, V> map, boolean usesFromBound, K fromKey, boolean fromInclusive, boolean usesToBound, K toKey, boolean toInclusive) {
             this.m = map;
             this.usesFromBound = usesFromBound;
             this.fromKey = fromKey;
