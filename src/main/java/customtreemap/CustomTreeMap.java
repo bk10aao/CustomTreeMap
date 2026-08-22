@@ -263,7 +263,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
         requireNonNull(toKey);
         int cmp = compare(fromKey, toKey);
         if (cmp > 0 || (cmp == 0 && (!fromInclusive || !toInclusive)))
-            throw new IllegalArgumentException("fromKey > toKey");
+            throw new IllegalArgumentException();
         return new AscendingSubMap<>(this, true, fromKey, fromInclusive, true, toKey, toInclusive);
     }
 
@@ -338,7 +338,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
                 throw new IllegalArgumentException();
             int cmp = m.compare(fromKey, toKey);
             if (cmp > 0 || (cmp == 0 && (!fromInclusive || !toInclusive)))
-                throw new IllegalArgumentException("fromKey > toKey");
+                throw new IllegalArgumentException();
             return new AscendingSubMap<>(m, true, fromKey, fromInclusive, true, toKey, toInclusive);
         }
 
@@ -351,7 +351,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
         public NavigableMap<K, V> tailMap(final K fromKey, final boolean inclusive) {
             requireNonNull(fromKey);
             if (inRange(fromKey, inclusive) && isTooLow(fromKey, inclusive))
-                throw new IllegalArgumentException("fromKey out of range");
+                throw new IllegalArgumentException();
             return new AscendingSubMap<>(m, true, fromKey, inclusive, usesToBound, toKey, toInclusive);
         }
     }
@@ -438,223 +438,8 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
         public NavigableMap<K, V> tailMap(final K fromKey, final boolean inclusive) {
             requireNonNull(fromKey);
             if (inRange(fromKey, inclusive) && isTooHigh(fromKey, inclusive))
-                throw new IllegalArgumentException("fromKey out of range");
+                throw new IllegalArgumentException();
             return new DescendingSubMap<>(m, true, fromKey, inclusive, usesToBound, toKey, toInclusive);
-        }
-    }
-
-    private static abstract class NavigableSubMap<K extends Comparable<K>, V> extends AbstractMap<K, V> implements NavigableMap<K, V> {
-        final CustomTreeMap<K, V> m;
-        final K fromKey;
-        final boolean fromInclusive;
-        final K toKey;
-        final boolean toInclusive;
-        final boolean usesFromBound;
-        final boolean usesToBound;
-
-        NavigableSubMap(final CustomTreeMap<K, V> map, final boolean usesFromBound, final K fromKey,
-                        final boolean fromInclusive, final boolean usesToBound, final K toKey,
-                        final boolean toInclusive) {
-            this.m = map;
-            this.usesFromBound = usesFromBound;
-            this.fromKey = fromKey;
-            this.fromInclusive = fromInclusive;
-            this.usesToBound = usesToBound;
-            this.toKey = toKey;
-            this.toInclusive = toInclusive;
-        }
-
-        abstract boolean isTooLow(final K key, final boolean inclusive);
-        abstract boolean isTooHigh(final K key, final boolean inclusive);
-        abstract Node<K, V> subMapNode(final boolean isFirst);
-        abstract Node<K, V> stepNode(final Node<K, V> node);
-
-        abstract K absFloor(K key);
-        abstract K absLower(K key);
-        abstract K absCeiling(K key);
-        abstract K absHigher(K key);
-
-        public Entry<K, V> ceilingEntry(final K key) {
-            return m.exportEntry(ceilingKey(key));
-        }
-
-        public K ceilingKey(final K key) {
-            requireNonNull(key);
-            K candidate = isTooLow(key, true) ? getSubMapKey(true) : absCeiling(key);
-            return inRange(candidate) ? candidate : null;
-        }
-
-        public void clear() {
-            Iterator<Entry<K, V>> it = entrySet().iterator();
-            while (it.hasNext()) {
-                it.next();
-                it.remove();
-            }
-        }
-
-        public boolean containsKey(final Object key) {
-            return inRange(key) && m.containsKey(key);
-        }
-
-        public NavigableSet<K> descendingKeySet() {
-            return descendingMap().navigableKeySet();
-        }
-
-        @Override
-        public Set<Entry<K, V>> entrySet() {
-            return new AbstractSet<>() {
-                @Override
-                public Iterator<Entry<K, V>> iterator() {
-                    return new Iterator<>() {
-                        private Node<K, V> nextNode = subMapNode(true);
-                        private Node<K, V> lastReturned = null;
-
-                        @Override
-                        public boolean hasNext() {
-                            return nextNode != null && inRange(nextNode.key);
-                        }
-
-                        @Override
-                        public Entry<K, V> next() {
-                            if (!hasNext()) throw new NoSuchElementException();
-                            lastReturned = nextNode;
-                            nextNode = stepNode(nextNode);
-                            return m.exportEntry(lastReturned.key);
-                        }
-
-                        @Override
-                        public void remove() {
-                            if (lastReturned == null) throw new IllegalStateException();
-                            m.deleteNode(lastReturned);
-                            lastReturned = null;
-                        }
-                    };
-                }
-
-                @Override
-                public int size() {
-                    int count = 0;
-                    for (Node<K, V> n = subMapNode(true); n != null && inRange(n.key); n = stepNode(n)) {
-                        count++;
-                    }
-                    return count;
-                }
-            };
-        }
-
-        public Entry<K, V> firstEntry() {
-            K k = getSubMapKey(true);
-            return k == null ? null : m.exportEntry(k);
-        }
-
-        public K firstKey() {
-            K k = getSubMapKey(true);
-            if (k == null)
-                throw new NoSuchElementException();
-            return k;
-        }
-
-        public Entry<K, V> floorEntry(final K key) {
-            return m.exportEntry(floorKey(key));
-        }
-
-        public K floorKey(final K key) {
-            requireNonNull(key);
-            K candidate = isTooHigh(key, true) ? getSubMapKey(false) : absFloor(key);
-            return inRange(candidate) ? candidate : null;
-        }
-
-        public V get(final Object key) {
-            return inRange(key) ? m.get(key) : null;
-        }
-
-        public SortedMap<K, V> headMap(final K toKey) {
-            return headMap(toKey, false);
-        }
-
-        public Entry<K, V> higherEntry(final K key) {
-            return m.exportEntry(higherKey(key));
-        }
-
-        public K higherKey(final K key) {
-            requireNonNull(key);
-            K candidate = isTooLow(key, false) ? getSubMapKey(true) : absHigher(key);
-            return inRange(candidate) ? candidate : null;
-        }
-
-        final boolean inRange(final Object key) {
-            return key != null && inRange((K) key);
-        }
-
-        final boolean inRange(final K key) {
-            return !isTooLow(key, true) && !isTooHigh(key, true);
-        }
-
-        final boolean inRange(final K key, final boolean inclusive) {
-            return isTooLow(key, inclusive) || isTooHigh(key, inclusive);
-        }
-
-        public Entry<K, V> lastEntry() {
-            K k = getSubMapKey(false);
-            return k == null ? null : m.exportEntry(k);
-        }
-
-        public K lastKey() {
-            K k = getSubMapKey(false);
-            if (k == null)
-                throw new NoSuchElementException();
-            return k;
-        }
-
-        public Entry<K, V> lowerEntry(final K key) {
-            return m.exportEntry(lowerKey(key));
-        }
-
-        public K lowerKey(final K key) {
-            requireNonNull(key);
-            K candidate = isTooHigh(key, false) ? getSubMapKey(false) : absLower(key);
-            return inRange(candidate) ? candidate : null;
-        }
-
-        public NavigableSet<K> navigableKeySet() {
-            return new KeySet<>(this);
-        }
-
-        public Entry<K, V> pollFirstEntry() {
-            Entry<K, V> e = firstEntry();
-            if (e != null)
-                m.remove(e.getKey());
-            return e;
-        }
-
-        public Entry<K, V> pollLastEntry() {
-            Entry<K, V> e = lastEntry();
-            if (e != null)
-                m.remove(e.getKey());
-            return e;
-        }
-
-        public V put(final K key, final V value) {
-            if (!inRange(key))
-                throw new IllegalArgumentException("Key out of range");
-            return m.put(key, value);
-        }
-
-        public V remove(final Object key) {
-            return inRange(key) ? m.remove(key) : null;
-        }
-
-        public SortedMap<K, V> subMap(final K fromKey, final K toKey) {
-            return subMap(fromKey, true, toKey, false);
-        }
-
-        public SortedMap<K, V> tailMap(final K fromKey) {
-            return tailMap(fromKey, true);
-        }
-
-        private K getSubMapKey(boolean isFirst) {
-            Node<K, V> n = subMapNode(isFirst);
-            return (n != null && inRange(n.key)) ? n.key : null;
         }
     }
 
@@ -766,6 +551,223 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
 
         public NavigableSet<E> tailSet(E fromElement, boolean inclusive) {
             return map.tailMap(fromElement, inclusive).navigableKeySet();
+        }
+    }
+
+    private static abstract class NavigableSubMap<K extends Comparable<K>, V> extends AbstractMap<K, V> implements NavigableMap<K, V> {
+        final CustomTreeMap<K, V> m;
+        final K fromKey;
+        final boolean fromInclusive;
+        final K toKey;
+        final boolean toInclusive;
+        final boolean usesFromBound;
+        final boolean usesToBound;
+
+        NavigableSubMap(final CustomTreeMap<K, V> map, final boolean usesFromBound, final K fromKey,
+                        final boolean fromInclusive, final boolean usesToBound, final K toKey,
+                        final boolean toInclusive) {
+            this.m = map;
+            this.usesFromBound = usesFromBound;
+            this.fromKey = fromKey;
+            this.fromInclusive = fromInclusive;
+            this.usesToBound = usesToBound;
+            this.toKey = toKey;
+            this.toInclusive = toInclusive;
+        }
+
+        abstract boolean isTooLow(final K key, final boolean inclusive);
+        abstract boolean isTooHigh(final K key, final boolean inclusive);
+        abstract Node<K, V> subMapNode(final boolean isFirst);
+        abstract Node<K, V> stepNode(final Node<K, V> node);
+
+        abstract K absFloor(K key);
+        abstract K absLower(K key);
+        abstract K absCeiling(K key);
+        abstract K absHigher(K key);
+
+        public Entry<K, V> ceilingEntry(final K key) {
+            return m.exportEntry(ceilingKey(key));
+        }
+
+        public K ceilingKey(final K key) {
+            requireNonNull(key);
+            K candidate = isTooLow(key, true) ? getSubMapKey(true) : absCeiling(key);
+            return inRange(candidate) ? candidate : null;
+        }
+
+        public void clear() {
+            Iterator<Entry<K, V>> it = entrySet().iterator();
+            while (it.hasNext()) {
+                it.next();
+                it.remove();
+            }
+        }
+
+        public boolean containsKey(final Object key) {
+            return inRange(key) && m.containsKey(key);
+        }
+
+        public NavigableSet<K> descendingKeySet() {
+            return descendingMap().navigableKeySet();
+        }
+
+        @Override
+        public Set<Entry<K, V>> entrySet() {
+            return new AbstractSet<>() {
+                @Override
+                public Iterator<Entry<K, V>> iterator() {
+                    return new Iterator<>() {
+                        private Node<K, V> nextNode = subMapNode(true);
+                        private Node<K, V> lastReturned = null;
+
+                        @Override
+                        public boolean hasNext() {
+                            return nextNode != null && inRange(nextNode.key);
+                        }
+
+                        @Override
+                        public Entry<K, V> next() {
+                            if (!hasNext())
+                                throw new NoSuchElementException();
+                            lastReturned = nextNode;
+                            nextNode = stepNode(nextNode);
+                            return m.exportEntry(lastReturned.key);
+                        }
+
+                        @Override
+                        public void remove() {
+                            if (lastReturned == null)
+                                throw new IllegalStateException();
+                            m.deleteNode(lastReturned);
+                            lastReturned = null;
+                        }
+                    };
+                }
+
+                @Override
+                public int size() {
+                    int count = 0;
+                    for (Node<K, V> n = subMapNode(true); n != null && inRange(n.key); n = stepNode(n)) {
+                        count++;
+                    }
+                    return count;
+                }
+            };
+        }
+
+        public Entry<K, V> firstEntry() {
+            K k = getSubMapKey(true);
+            return k == null ? null : m.exportEntry(k);
+        }
+
+        public K firstKey() {
+            K k = getSubMapKey(true);
+            if (k == null)
+                throw new NoSuchElementException();
+            return k;
+        }
+
+        public Entry<K, V> floorEntry(final K key) {
+            return m.exportEntry(floorKey(key));
+        }
+
+        public K floorKey(final K key) {
+            requireNonNull(key);
+            K candidate = isTooHigh(key, true) ? getSubMapKey(false) : absFloor(key);
+            return inRange(candidate) ? candidate : null;
+        }
+
+        public V get(final Object key) {
+            return inRange(key) ? m.get(key) : null;
+        }
+
+        public SortedMap<K, V> headMap(final K toKey) {
+            return headMap(toKey, false);
+        }
+
+        public Entry<K, V> higherEntry(final K key) {
+            return m.exportEntry(higherKey(key));
+        }
+
+        public K higherKey(final K key) {
+            requireNonNull(key);
+            K candidate = isTooLow(key, false) ? getSubMapKey(true) : absHigher(key);
+            return inRange(candidate) ? candidate : null;
+        }
+
+        final boolean inRange(final Object key) {
+            return key != null && inRange((K) key);
+        }
+
+        final boolean inRange(final K key) {
+            return !isTooLow(key, true) && !isTooHigh(key, true);
+        }
+
+        final boolean inRange(final K key, final boolean inclusive) {
+            return isTooLow(key, inclusive) || isTooHigh(key, inclusive);
+        }
+
+        public Entry<K, V> lastEntry() {
+            K k = getSubMapKey(false);
+            return k == null ? null : m.exportEntry(k);
+        }
+
+        public K lastKey() {
+            K k = getSubMapKey(false);
+            if (k == null)
+                throw new NoSuchElementException();
+            return k;
+        }
+
+        public Entry<K, V> lowerEntry(final K key) {
+            return m.exportEntry(lowerKey(key));
+        }
+
+        public K lowerKey(final K key) {
+            requireNonNull(key);
+            K candidate = isTooHigh(key, false) ? getSubMapKey(false) : absLower(key);
+            return inRange(candidate) ? candidate : null;
+        }
+
+        public NavigableSet<K> navigableKeySet() {
+            return new KeySet<>(this);
+        }
+
+        public Entry<K, V> pollFirstEntry() {
+            Entry<K, V> e = firstEntry();
+            if (e != null)
+                m.remove(e.getKey());
+            return e;
+        }
+
+        public Entry<K, V> pollLastEntry() {
+            Entry<K, V> e = lastEntry();
+            if (e != null)
+                m.remove(e.getKey());
+            return e;
+        }
+
+        public V put(final K key, final V value) {
+            if (!inRange(key))
+                throw new IllegalArgumentException();
+            return m.put(key, value);
+        }
+
+        public V remove(final Object key) {
+            return inRange(key) ? m.remove(key) : null;
+        }
+
+        public SortedMap<K, V> subMap(final K fromKey, final K toKey) {
+            return subMap(fromKey, true, toKey, false);
+        }
+
+        public SortedMap<K, V> tailMap(final K fromKey) {
+            return tailMap(fromKey, true);
+        }
+
+        private K getSubMapKey(boolean isFirst) {
+            Node<K, V> n = subMapNode(isFirst);
+            return (n != null && inRange(n.key)) ? n.key : null;
         }
     }
 
@@ -997,11 +999,9 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
 
     private Node<K, V> getLastNode() {
         Node<K, V> p = root;
-        if (p != null) {
-            while (p.right != null) {
+        if (p != null)
+            while (p.right != null)
                 p = p.right;
-            }
-        }
         return p;
     }
 
