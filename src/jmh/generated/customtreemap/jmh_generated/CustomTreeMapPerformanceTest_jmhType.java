@@ -1,0 +1,4 @@
+package customtreemap.jmh_generated;
+public class CustomTreeMapPerformanceTest_jmhType extends CustomTreeMapPerformanceTest_jmhType_B3 {
+}
+

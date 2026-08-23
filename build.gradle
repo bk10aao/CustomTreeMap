@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'jacoco'
+    id 'me.champeau.jmh' version '0.7.2'
 }
 
 group = 'CustomTreeMap'
@@ -25,6 +26,10 @@ dependencies {
     testCompileOnly("org.projectlombok:lombok:1.18.46")
     testAnnotationProcessor("org.projectlombok:lombok:1.18.46")
     testImplementation 'org.assertj:assertj-core:3.25.3'
+
+    // JMH dependencies
+    jmhImplementation 'org.openjdk.jmh:jmh-core:1.37'
+    jmhAnnotationProcessor 'org.openjdk.jmh:jmh-generator-annprocess:1.37'
 }
 
 test {
@@ -41,6 +46,20 @@ jacocoTestReport {
     }
 }
 
+// Exclude benchmark classes from JaCoCo code coverage analysis
+jacocoTestReport {
+    afterEvaluate {
+        classDirectories.setFrom(
+                files(classDirectories.files.collect { dir ->
+                    fileTree(dir: dir).exclude([
+                            '**/*PerformanceTest*.class',
+                            '**/*Benchmark*.class'
+                    ])
+                })
+        )
+    }
+}
+
 jacocoTestCoverageVerification {
     violationRules {
         rule {
@@ -52,4 +71,13 @@ jacocoTestCoverageVerification {
             }
         }
     }
+}
+
+// ================== JMH CONFIGURATION ==================
+jmh {
+    includes = ['.*']          // Run all benchmarks
+    fork = 1
+    warmupIterations = 3
+    iterations = 5
+    resultFormat = 'CSV'
 }
