@@ -369,7 +369,7 @@ Benchmark;Size;Score (ns/op)
 "size()";90000;0.5670109119531551
 "size()";100000;0.543381687749604
 "Constructor(SortedMap)";10000;647783.3515320992
-"Constructor(SortedMap";20000;1332032.8337230843
+"Constructor(SortedMap)";20000;1332032.8337230843
 "Constructor(SortedMap)";30000;2243796.4025947144
 "Constructor(SortedMap)";40000;3050631.08418036
 "Constructor(SortedMap)";50000;3922511.96738223

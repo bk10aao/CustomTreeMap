@@ -70,7 +70,7 @@ sns.heatmap(clipped_heatmap_data,
             annot_kws={'size': 10, 'weight': 'bold', 'color': '#000000'})
 
 # 10. Format Title, Labels, and Colorbar styling to match transparency guidelines
-ax.set_title('CustomTreeMap vs JDK TreeMap Performance Speedup Matrix Heatmap Across Sizes\n(Positive = CustomTreeMap Faster, Negative = JDK TreeMap Faster)',
+ax.set_title('CustomTreeMap vs JDK (Positive = Custom Faster, Negative = JDK Faster)',
              color='#ffffff', fontsize=16, fontweight='bold', pad=20)
 ax.set_ylabel('Map Interface Methods', color='#aaaaaa', fontsize=13, labelpad=10)
 ax.set_xlabel('Collection Size (Elements)', color='#aaaaaa', fontsize=13, labelpad=10)

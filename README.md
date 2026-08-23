@@ -158,6 +158,7 @@ Geometric mean (ns/op) across all tested collection sizes (10,000-100,000 elemen
 ![Chart](PerformanceCharts/TreeMap.png)
 ![Chart](PerformanceCharts/TreeMap_Comparator.png)
 ![Chart](PerformanceCharts/TreeMap_Map.png)
+![Chart](PerformanceCharts/TreeMap_SortedMap.png)
 ![Chart](PerformanceCharts/ceilingEntry_K.png)
 ![Chart](PerformanceCharts/ceilingKey_K.png)
 ![Chart](PerformanceCharts/clear.png)
