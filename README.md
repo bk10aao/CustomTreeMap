@@ -12,7 +12,7 @@ To test the project run command `./gradlew test`
 
 ### Time Complexity
 
-| Operation / Method                 |  Custom Time  |   JDK Time    | Winner  |
+| Operation / Method                 |    Custom     |      JDK      | Winner  |
 |:-----------------------------------|:-------------:|:-------------:|:-------:|
 | **CustomTreeMap()**                |    $O(1)$     |    $O(1)$     |   Tie   |
 | **CustomTreeMap(Comparator)**      |    $O(1)$     |    $O(1)$     |   Tie   |
@@ -50,54 +50,54 @@ To test the project run command `./gradlew test`
 | **tailMap(K)**                     |    $O(1)$     |    $O(1)$     |   Tie   |
 | **tailMap(K, boolean)**            |    $O(1)$     |    $O(1)$     |   Tie   |
 
-### Space Complexity (Auxiliary)
+### Space Complexity
 
-| Operation / Method                 | Custom Space | JDK Space | Winner |
-|:-----------------------------------|:------------:|:---------:|:------:|
-| **CustomTreeMap()**                |    $O(1)$    |  $O(1)$   |  Tie   |
-| **CustomTreeMap(Comparator)**      |    $O(1)$    |  $O(1)$   |  Tie   |
-| **CustomTreeMap(Map)**             |    $O(1)$    |  $O(1)$   |  Tie   |
-| **CustomTreeMap(SortedMap)**       |    $O(1)$    |  $O(1)$   |  Tie   |
-| **ceilingEntry(K)**                |    $O(1)$    |  $O(1)$   |  Tie   |
-| **ceilingKey(K)**                  |    $O(1)$    |  $O(1)$   |  Tie   |
-| **clear()**                        |    $O(1)$    |  $O(1)$   |  Tie   |
-| **comparator()**                   |    $O(1)$    |  $O(1)$   |  Tie   |
-| **containsKey(Object)**            |    $O(1)$    |  $O(1)$   |  Tie   |
-| **descendingKeySet()**             |    $O(1)$    |  $O(1)$   |  Tie   |
-| **descendingMap()**                |    $O(1)$    |  $O(1)$   |  Tie   |
-| **entrySet()**                     |    $O(1)$    |  $O(1)$   |  Tie   |
-| **firstEntry()**                   |    $O(1)$    |  $O(1)$   |  Tie   |
-| **firstKey()**                     |    $O(1)$    |  $O(1)$   |  Tie   |
-| **floorEntry(K)**                  |    $O(1)$    |  $O(1)$   |  Tie   |
-| **floorKey(K)**                    |    $O(1)$    |  $O(1)$   |  Tie   |
-| **get(Object)**                    |    $O(1)$    |  $O(1)$   |  Tie   |
-| **headMap(K)**                     |    $O(1)$    |  $O(1)$   |  Tie   |
-| **headMap(K, boolean)**            |    $O(1)$    |  $O(1)$   |  Tie   |
-| **higherEntry(K)**                 |    $O(1)$    |  $O(1)$   |  Tie   |
-| **higherKey(K)**                   |    $O(1)$    |  $O(1)$   |  Tie   |
-| **lastEntry()**                    |    $O(1)$    |  $O(1)$   |  Tie   |
-| **lastKey()**                      |    $O(1)$    |  $O(1)$   |  Tie   |
-| **lowerEntry(K)**                  |    $O(1)$    |  $O(1)$   |  Tie   |
-| **lowerKey(K)**                    |    $O(1)$    |  $O(1)$   |  Tie   |
-| **navigableKeySet()**              |    $O(1)$    |  $O(1)$   |  Tie   |
-| **pollFirstEntry()**               |    $O(1)$    |  $O(1)$   |  Tie   |
-| **pollLastEntry()**                |    $O(1)$    |  $O(1)$   |  Tie   |
-| **put(K, V)**                      |    $O(1)$    |  $O(1)$   |  Tie   |
-| **remove(Object)**                 |    $O(1)$    |  $O(1)$   |  Tie   |
-| **size()**                         |    $O(1)$    |  $O(1)$   |  Tie   |
-| **subMap(K, K)**                   |    $O(1)$    |  $O(1)$   |  Tie   |
-| **subMap(K, boolean, K, boolean)** |    $O(1)$    |  $O(1)$   |  Tie   |
-| **tailMap(K)**                     |    $O(1)$    |  $O(1)$   |  Tie   |
-| **tailMap(K, boolean)**            |    $O(1)$    |  $O(1)$   |  Tie   |
+| Operation / Method                 |   Custom    |   JDK    | Winner |
+|:-----------------------------------|:-----------:|:--------:|:------:|
+| **CustomTreeMap()**                |   $O(1)$    |  $O(1)$  |  Tie   |
+| **CustomTreeMap(Comparator)**      |   $O(1)$    |  $O(1)$  |  Tie   |
+| **CustomTreeMap(Map)**             |   $O(1)$    |  $O(1)$  |  Tie   |
+| **CustomTreeMap(SortedMap)**       |   $O(1)$    |  $O(1)$  |  Tie   |
+| **ceilingEntry(K)**                |   $O(1)$    |  $O(1)$  |  Tie   |
+| **ceilingKey(K)**                  |   $O(1)$    |  $O(1)$  |  Tie   |
+| **clear()**                        |   $O(1)$    |  $O(1)$  |  Tie   |
+| **comparator()**                   |   $O(1)$    |  $O(1)$  |  Tie   |
+| **containsKey(Object)**            |   $O(1)$    |  $O(1)$  |  Tie   |
+| **descendingKeySet()**             |   $O(1)$    |  $O(1)$  |  Tie   |
+| **descendingMap()**                |   $O(1)$    |  $O(1)$  |  Tie   |
+| **entrySet()**                     |   $O(1)$    |  $O(1)$  |  Tie   |
+| **firstEntry()**                   |   $O(1)$    |  $O(1)$  |  Tie   |
+| **firstKey()**                     |   $O(1)$    |  $O(1)$  |  Tie   |
+| **floorEntry(K)**                  |   $O(1)$    |  $O(1)$  |  Tie   |
+| **floorKey(K)**                    |   $O(1)$    |  $O(1)$  |  Tie   |
+| **get(Object)**                    |   $O(1)$    |  $O(1)$  |  Tie   |
+| **headMap(K)**                     |   $O(1)$    |  $O(1)$  |  Tie   |
+| **headMap(K, boolean)**            |   $O(1)$    |  $O(1)$  |  Tie   |
+| **higherEntry(K)**                 |   $O(1)$    |  $O(1)$  |  Tie   |
+| **higherKey(K)**                   |   $O(1)$    |  $O(1)$  |  Tie   |
+| **lastEntry()**                    |   $O(1)$    |  $O(1)$  |  Tie   |
+| **lastKey()**                      |   $O(1)$    |  $O(1)$  |  Tie   |
+| **lowerEntry(K)**                  |   $O(1)$    |  $O(1)$  |  Tie   |
+| **lowerKey(K)**                    |   $O(1)$    |  $O(1)$  |  Tie   |
+| **navigableKeySet()**              |   $O(1)$    |  $O(1)$  |  Tie   |
+| **pollFirstEntry()**               |   $O(1)$    |  $O(1)$  |  Tie   |
+| **pollLastEntry()**                |   $O(1)$    |  $O(1)$  |  Tie   |
+| **put(K, V)**                      |   $O(1)$    |  $O(1)$  |  Tie   |
+| **remove(Object)**                 |   $O(1)$    |  $O(1)$  |  Tie   |
+| **size()**                         |   $O(1)$    |  $O(1)$  |  Tie   |
+| **subMap(K, K)**                   |   $O(1)$    |  $O(1)$  |  Tie   |
+| **subMap(K, boolean, K, boolean)** |   $O(1)$    |  $O(1)$  |  Tie   |
+| **tailMap(K)**                     |   $O(1)$    |  $O(1)$  |  Tie   |
+| **tailMap(K, boolean)**            |   $O(1)$    |  $O(1)$  |  Tie   |
 
 # CustomTreeMap vs JDK TreeMap: Performance Comparison
 
-Geometric mean (ns/op) across all tested collection sizes (10,000-100,000 elements). Margins under 1.10x are treated as noise-level ties since the source data has no per-run error/variance to test true statistical significance._
+Geometric mean (ns/op) across all tested collection sizes (10,000-100,000 elements). Margins under 1.10x are treated as noise-level ties since the source data has no per-run error/variance to test true statistical significance.
 
 | Method                                                                   | Custom (ns) | JDK (ns)    | Margin |            Winner            |
 |:-------------------------------------------------------------------------|:------------|:------------|:------:|:----------------------------:|
 | `Constructor()`                                                          | 4.9         | 5           | 1.02x  | **Statistically Equivalent** |
-| `Constructor(Comparator<? super K> comparator)`                          | 1.5         | 1.5         | 1.03x  | **Statistically Equivalent** |
+| `Constructor(Comparator<? super K> comparator)`                          | 1.5         | 1.5         | 1.00x  | **Statistically Equivalent** |
 | `Constructor(Map<? extends K, ? extends V> m)`                           | 6,805,107.7 | 6,749,178.3 | 1.01x  | **Statistically Equivalent** |
 | `Constructor(SortedMap<K, ? extends V> m)`                               | 3,148,818.4 | 3,430,996.9 | 1.09x  | **Statistically Equivalent** |
 | `ceilingEntry(K key)`                                                    | 218.4       | 211.2       | 1.03x  | **Statistically Equivalent** |
@@ -119,7 +119,7 @@ Geometric mean (ns/op) across all tested collection sizes (10,000-100,000 elemen
 | `get(Object key)`                                                        | 125.1       | 124.3       | 1.01x  | **Statistically Equivalent** |
 | `headMap(K toKey)`                                                       | 1.8         | 1.8         | 1.00x  | **Statistically Equivalent** |
 | `headMap(K toKey).entrySet().iterator()`                                 | 1,401,393.3 | 1,398,458.7 | 1.00x  | **Statistically Equivalent** |
-| `headMap(K toKey, boolean inclusive)`                                    | 2           | 2           |  1.0x  | **Statistically Equivalent** |
+| `headMap(K toKey, boolean inclusive)`                                    | 2           | 2           | 1.00x  | **Statistically Equivalent** |
 | `higherEntry(K key)`                                                     | 229.1       | 226.6       | 1.01x  | **Statistically Equivalent** |
 | `higherKey(K key)`                                                       | 101.9       | 97.9        | 1.04x  | **Statistically Equivalent** |
 | `isEmpty()`                                                              | 0.544       | 0.528       | 1.03x  | **Statistically Equivalent** |
