@@ -1,22 +1,22 @@
 Benchmark;Size;Score (ns/op)
-"ceilingEntry(final K key)";10000;176.39904698291494
-"ceilingEntry(final K key)";20000;200.47026641593106
-"ceilingEntry(final K key)";30000;200.63857714942614
-"ceilingEntry(final K key)";40000;210.39624178357107
-"ceilingEntry(final K key)";50000;224.6148103860527
-"ceilingEntry(final K key)";70000;231.78168929666094
-"ceilingEntry(final K key)";80000;249.65795758204797
-"ceilingEntry(final K key)";90000;237.2164441981234
-"ceilingEntry(final K key)";100000;245.5701248660899
-"ceilingKey(final K key)";10000;95.23976294687823
-"ceilingKey(final K key)";20000;110.86154273776289
-"ceilingKey(final K key)";30000;117.21344268121584
-"ceilingKey(final K key)";40000;132.12480727816308
-"ceilingKey(final K key)";50000;132.94952225055846
-"ceilingKey(final K key)";70000;143.4580249392183
-"ceilingKey(final K key)";80000;145.25122123036226
-"ceilingKey(final K key)";90000;151.20819638353575
-"ceilingKey(final K key)";100000;152.357737145705
+"ceilingEntry(K)";10000;176.39904698291494
+"ceilingEntry(K)";20000;200.47026641593106
+"ceilingEntry(K)";30000;200.63857714942614
+"ceilingEntry(K)";40000;210.39624178357107
+"ceilingEntry(K)";50000;224.6148103860527
+"ceilingEntry(K)";70000;231.78168929666094
+"ceilingEntry(K)";80000;249.65795758204797
+"ceilingEntry(K)";90000;237.2164441981234
+"ceilingEntry(K)";100000;245.5701248660899
+"ceilingKey(K)";10000;95.23976294687823
+"ceilingKey(K)";20000;110.86154273776289
+"ceilingKey(K)";30000;117.21344268121584
+"ceilingKey(K)";40000;132.12480727816308
+"ceilingKey(K)";50000;132.94952225055846
+"ceilingKey(K)";70000;143.4580249392183
+"ceilingKey(K)";80000;145.25122123036226
+"ceilingKey(K)";90000;151.20819638353575
+"ceilingKey(K)";100000;152.357737145705
 "clear()";10000;0.579783903197813
 "clear()";20000;0.5680552939709481
 "clear()";30000;0.5424563484498813
@@ -35,33 +35,33 @@ Benchmark;Size;Score (ns/op)
 "comparator()";80000;0.5929674778800602
 "comparator()";90000;0.5702553189460188
 "comparator()";100000;0.5317072296134183
-"Constructor(final Comparator<? super K> comparator)";10000;1.4795348553614094
-"Constructor(final Comparator<? super K> comparator)";20000;1.486908608548614
-"Constructor(final Comparator<? super K> comparator)";30000;1.5661733624965197
-"Constructor(final Comparator<? super K> comparator)";40000;1.4579022136346282
-"Constructor(final Comparator<? super K> comparator)";50000;1.4941778463341453
-"Constructor(final Comparator<? super K> comparator)";70000;1.5730388175280243
-"Constructor(final Comparator<? super K> comparator)";80000;1.548197249828151
-"Constructor(final Comparator<? super K> comparator)";90000;1.4961117671945319
-"Constructor(final Comparator<? super K> comparator)";100000;1.5560795084772028
-"containsKey(final Object key)";10000;96.86338782964994
-"containsKey(final Object key)";20000;114.88075534806126
-"containsKey(final Object key)";30000;116.42341824675691
-"containsKey(final Object key)";40000;120.8324278323238
-"containsKey(final Object key)";50000;128.1882997220359
-"containsKey(final Object key)";70000;138.1720048086259
-"containsKey(final Object key)";80000;138.75967206157364
-"containsKey(final Object key)";90000;142.92651571558574
-"containsKey(final Object key)";100000;149.47697128829356
-"containsValue(final Object value)";10000;278282.8997125008
-"containsValue(final Object value)";20000;607087.3569311373
-"containsValue(final Object value)";30000;927648.2271765765
-"containsValue(final Object value)";40000;1268227.078895956
-"containsValue(final Object value)";50000;1560430.7780119746
-"containsValue(final Object value)";70000;2256029.8117926545
-"containsValue(final Object value)";80000;2579633.984606002
-"containsValue(final Object value)";90000;2933620.336519895
-"containsValue(final Object value)";100000;3349685.051219899
+"Constructor(Comparator)";10000;1.4795348553614094
+"Constructor(Comparator)";20000;1.486908608548614
+"Constructor(Comparator)";30000;1.5661733624965197
+"Constructor(Comparator)";40000;1.4579022136346282
+"Constructor(Comparator)";50000;1.4941778463341453
+"Constructor(Comparator)";70000;1.5730388175280243
+"Constructor(Comparator)";80000;1.548197249828151
+"Constructor(Comparator)";90000;1.4961117671945319
+"Constructor(Comparator)";100000;1.5560795084772028
+"containsKey(Object)";10000;96.86338782964994
+"containsKey(Object)";20000;114.88075534806126
+"containsKey(Object)";30000;116.42341824675691
+"containsKey(Object)";40000;120.8324278323238
+"containsKey(Object)";50000;128.1882997220359
+"containsKey(Object)";70000;138.1720048086259
+"containsKey(Object)";80000;138.75967206157364
+"containsKey(Object)";90000;142.92651571558574
+"containsKey(Object)";100000;149.47697128829356
+"containsValue(Object)";10000;278282.8997125008
+"containsValue(Object)";20000;607087.3569311373
+"containsValue(Object)";30000;927648.2271765765
+"containsValue(Object)";40000;1268227.078895956
+"containsValue(Object)";50000;1560430.7780119746
+"containsValue(Object)";70000;2256029.8117926545
+"containsValue(Object)";80000;2579633.984606002
+"containsValue(Object)";90000;2933620.336519895
+"containsValue(Object)";100000;3349685.051219899
 "Constructor()";10000;4.992703285770034
 "Constructor()";20000;4.90967403147382
 "Constructor()";30000;4.925572628316766
@@ -143,78 +143,78 @@ Benchmark;Size;Score (ns/op)
 "firstKey()";80000;10.607026331447743
 "firstKey()";90000;10.610559439167323
 "firstKey()";100000;10.589120361660006
-"floorEntry(final K key)";10000;169.12522850881683
-"floorEntry(final K key)";20000;192.12618007280355
-"floorEntry(final K key)";30000;203.0887170692106
-"floorEntry(final K key)";40000;210.66057772542584
-"floorEntry(final K key)";50000;213.96970523093478
-"floorEntry(final K key)";70000;226.7566809927024
-"floorEntry(final K key)";80000;232.70308597910105
-"floorEntry(final K key)";90000;234.84122227375678
-"floorEntry(final K key)";100000;240.06314057615361
-"floorKey(final K key)";10000;94.15030464717476
-"floorKey(final K key)";20000;109.84251917232841
-"floorKey(final K key)";30000;116.2059647677898
-"floorKey(final K key)";40000;123.1621172020732
-"floorKey(final K key)";50000;125.9869682244615
-"floorKey(final K key)";70000;136.55182075131384
-"floorKey(final K key)";80000;140.5127421786521
-"floorKey(final K key)";90000;142.15404051661804
-"floorKey(final K key)";100000;147.45244989702417
-"get(final Object key)";10000;96.28385664624517
-"get(final Object key)";20000;110.04627281411001
-"get(final Object key)";30000;116.74744690136936
-"get(final Object key)";40000;121.0072865246358
-"get(final Object key)";50000;127.2169132308469
-"get(final Object key)";70000;136.84001630747298
-"get(final Object key)";80000;136.41884921722212
-"get(final Object key)";90000;142.7190546404868
-"get(final Object key)";100000;147.90629463926555
-"headMap(final K toKey).entrySet().iterator()";10000;299640.4906273017
-"headMap(final K toKey).entrySet().iterator()";20000;621421.2682093913
-"headMap(final K toKey).entrySet().iterator()";30000;927835.9561445238
-"headMap(final K toKey).entrySet().iterator()";40000;1282160.2642653582
-"headMap(final K toKey).entrySet().iterator()";50000;1588686.9236104812
-"headMap(final K toKey).entrySet().iterator()";70000;2280158.9744901066
-"headMap(final K toKey).entrySet().iterator()";80000;2623249.286746422
-"headMap(final K toKey).entrySet().iterator()";90000;2990663.6196194454
-"headMap(final K toKey).entrySet().iterator()";100000;3311536.875014625
-"headMap(final K toKey)";10000;1.7782322301926887
-"headMap(final K toKey)";20000;1.780376271830586
-"headMap(final K toKey)";30000;1.7681933857376972
-"headMap(final K toKey)";40000;1.7821166188244
-"headMap(final K toKey)";50000;1.7842546247796058
-"headMap(final K toKey)";70000;1.7903326108496238
-"headMap(final K toKey)";80000;1.7921896229791432
-"headMap(final K toKey)";90000;1.8144465554757268
-"headMap(final K toKey)";100000;1.8951614880572587
-"headMap(final K toKey, final boolean inclusive)";10000;2.1882791766533565
-"headMap(final K toKey, final boolean inclusive)";20000;2.079421828067226
-"headMap(final K toKey, final boolean inclusive)";30000;1.9945684805848358
-"headMap(final K toKey, final boolean inclusive)";40000;2.1079815040737486
-"headMap(final K toKey, final boolean inclusive)";50000;2.1303905181291807
-"headMap(final K toKey, final boolean inclusive)";70000;2.0579435563845507
-"headMap(final K toKey, final boolean inclusive)";80000;1.9010476520406077
-"headMap(final K toKey, final boolean inclusive)";90000;1.953509689801038
-"headMap(final K toKey, final boolean inclusive)";100000;1.9285864709599447
-"higherEntry(final K key)";10000;206.10330495702098
-"higherEntry(final K key)";20000;207.92741668561771
-"higherEntry(final K key)";30000;216.14529450100153
-"higherEntry(final K key)";40000;221.31692002874877
-"higherEntry(final K key)";50000;222.58920733675473
-"higherEntry(final K key)";70000;241.6459232356284
-"higherEntry(final K key)";80000;245.22051237673978
-"higherEntry(final K key)";90000;250.5647410521514
-"higherEntry(final K key)";100000;256.5935017316355
-"higherKey(final K key)";10000;80.12972779695058
-"higherKey(final K key)";20000;87.33396684792116
-"higherKey(final K key)";30000;114.43058741463278
-"higherKey(final K key)";40000;100.43256811493744
-"higherKey(final K key)";50000;99.1766861008827
-"higherKey(final K key)";70000;106.32858421023116
-"higherKey(final K key)";80000;110.44196538770522
-"higherKey(final K key)";90000;111.44529654477019
-"higherKey(final K key)";100000;113.78682616839292
+"floorEntry(K)";10000;169.12522850881683
+"floorEntry(K)";20000;192.12618007280355
+"floorEntry(K)";30000;203.0887170692106
+"floorEntry(K)";40000;210.66057772542584
+"floorEntry(K)";50000;213.96970523093478
+"floorEntry(K)";70000;226.7566809927024
+"floorEntry(K)";80000;232.70308597910105
+"floorEntry(K)";90000;234.84122227375678
+"floorEntry(K)";100000;240.06314057615361
+"floorKey(K)";10000;94.15030464717476
+"floorKey(K)";20000;109.84251917232841
+"floorKey(K)";30000;116.2059647677898
+"floorKey(K)";40000;123.1621172020732
+"floorKey(K)";50000;125.9869682244615
+"floorKey(K)";70000;136.55182075131384
+"floorKey(K)";80000;140.5127421786521
+"floorKey(K)";90000;142.15404051661804
+"floorKey(K)";100000;147.45244989702417
+"get(Object)";10000;96.28385664624517
+"get(Object)";20000;110.04627281411001
+"get(Object)";30000;116.74744690136936
+"get(Object)";40000;121.0072865246358
+"get(Object)";50000;127.2169132308469
+"get(Object)";70000;136.84001630747298
+"get(Object)";80000;136.41884921722212
+"get(Object)";90000;142.7190546404868
+"get(Object)";100000;147.90629463926555
+"headMap(K).entrySet().iterator()";10000;299640.4906273017
+"headMap(K).entrySet().iterator()";20000;621421.2682093913
+"headMap(K).entrySet().iterator()";30000;927835.9561445238
+"headMap(K).entrySet().iterator()";40000;1282160.2642653582
+"headMap(K).entrySet().iterator()";50000;1588686.9236104812
+"headMap(K).entrySet().iterator()";70000;2280158.9744901066
+"headMap(K).entrySet().iterator()";80000;2623249.286746422
+"headMap(K).entrySet().iterator()";90000;2990663.6196194454
+"headMap(K).entrySet().iterator()";100000;3311536.875014625
+"headMap(K)";10000;1.7782322301926887
+"headMap(K)";20000;1.780376271830586
+"headMap(K)";30000;1.7681933857376972
+"headMap(K)";40000;1.7821166188244
+"headMap(K)";50000;1.7842546247796058
+"headMap(K)";70000;1.7903326108496238
+"headMap(K)";80000;1.7921896229791432
+"headMap(K)";90000;1.8144465554757268
+"headMap(K)";100000;1.8951614880572587
+"headMap(K, boolean)";10000;2.1882791766533565
+"headMap(K, boolean)";20000;2.079421828067226
+"headMap(K, boolean)";30000;1.9945684805848358
+"headMap(K, boolean)";40000;2.1079815040737486
+"headMap(K, boolean)";50000;2.1303905181291807
+"headMap(K, boolean)";70000;2.0579435563845507
+"headMap(K, boolean)";80000;1.9010476520406077
+"headMap(K, boolean)";90000;1.953509689801038
+"headMap(K, boolean)";100000;1.9285864709599447
+"higherEntry(K)";10000;206.10330495702098
+"higherEntry(K)";20000;207.92741668561771
+"higherEntry(K)";30000;216.14529450100153
+"higherEntry(K)";40000;221.31692002874877
+"higherEntry(K)";50000;222.58920733675473
+"higherEntry(K)";70000;241.6459232356284
+"higherEntry(K)";80000;245.22051237673978
+"higherEntry(K)";90000;250.5647410521514
+"higherEntry(K)";100000;256.5935017316355
+"higherKey(K)";10000;80.12972779695058
+"higherKey(K)";20000;87.33396684792116
+"higherKey(K)";30000;114.43058741463278
+"higherKey(K)";40000;100.43256811493744
+"higherKey(K)";50000;99.1766861008827
+"higherKey(K)";70000;106.32858421023116
+"higherKey(K)";80000;110.44196538770522
+"higherKey(K)";90000;111.44529654477019
+"higherKey(K)";100000;113.78682616839292
 "isEmpty()";10000;0.5255493446804117
 "isEmpty()";20000;0.5487183076992668
 "isEmpty()";30000;0.5656145054240018
@@ -260,33 +260,33 @@ Benchmark;Size;Score (ns/op)
 "lastKey()";80000;10.671208665184365
 "lastKey()";90000;10.674596615420304
 "lastKey()";100000;10.61882088742688
-"lowerEntry(final K key)";10000;183.90236520445765
-"lowerEntry(final K key)";20000;215.4881184965317
-"lowerEntry(final K key)";30000;214.8028980795042
-"lowerEntry(final K key)";40000;226.34800780957673
-"lowerEntry(final K key)";50000;233.0787504217757
-"lowerEntry(final K key)";70000;285.83968591703683
-"lowerEntry(final K key)";80000;265.92566760264543
-"lowerEntry(final K key)";90000;254.41194414401488
-"lowerEntry(final K key)";100000;263.782330811837
-"lowerKey(final K key)";10000;105.80046318624244
-"lowerKey(final K key)";20000;120.38440061388434
-"lowerKey(final K key)";30000;130.6536529271306
-"lowerKey(final K key)";40000;134.42063135854673
-"lowerKey(final K key)";50000;148.38262824834698
-"lowerKey(final K key)";70000;157.89894285918865
-"lowerKey(final K key)";80000;152.89900974953807
-"lowerKey(final K key)";90000;161.22613634659618
-"lowerKey(final K key)";100000;163.22316236664815
-"Constructor(final Map<? extends K, ? extends V> m)";10000;1157410.8625718986
-"Constructor(final Map<? extends K, ? extends V> m)";20000;2592954.3683936913
-"Constructor(final Map<? extends K, ? extends V> m)";30000;4280132.506154309
-"Constructor(final Map<? extends K, ? extends V> m)";40000;6124262.998514339
-"Constructor(final Map<? extends K, ? extends V> m)";50000;7806981.18974359
-"Constructor(final Map<? extends K, ? extends V> m)";70000;1.1584655113636365E7
-"Constructor(final Map<? extends K, ? extends V> m)";80000;1.4079282453539252E7
-"Constructor(final Map<? extends K, ? extends V> m)";90000;1.6428207469109194E7
-"Constructor(final Map<? extends K, ? extends V> m)";100000;1.901886603720662E7
+"lowerEntry(K)";10000;183.90236520445765
+"lowerEntry(K)";20000;215.4881184965317
+"lowerEntry(K)";30000;214.8028980795042
+"lowerEntry(K)";40000;226.34800780957673
+"lowerEntry(K)";50000;233.0787504217757
+"lowerEntry(K)";70000;285.83968591703683
+"lowerEntry(K)";80000;265.92566760264543
+"lowerEntry(K)";90000;254.41194414401488
+"lowerEntry(K)";100000;263.782330811837
+"lowerKey(K)";10000;105.80046318624244
+"lowerKey(K)";20000;120.38440061388434
+"lowerKey(K)";30000;130.6536529271306
+"lowerKey(K)";40000;134.42063135854673
+"lowerKey(K)";50000;148.38262824834698
+"lowerKey(K)";70000;157.89894285918865
+"lowerKey(K)";80000;152.89900974953807
+"lowerKey(K)";90000;161.22613634659618
+"lowerKey(K)";100000;163.22316236664815
+"Constructor(Map)";10000;1157410.8625718986
+"Constructor(Map)";20000;2592954.3683936913
+"Constructor(Map)";30000;4280132.506154309
+"Constructor(Map)";40000;6124262.998514339
+"Constructor(Map)";50000;7806981.18974359
+"Constructor(Map)";70000;1.1584655113636365E7
+"Constructor(Map)";80000;1.4079282453539252E7
+"Constructor(Map)";90000;1.6428207469109194E7
+"Constructor(Map)";100000;1.901886603720662E7
 "navigableKeySet()";10000;1.3507141219376433
 "navigableKeySet()";20000;1.3132559369645567
 "navigableKeySet()";30000;1.2480212155792
@@ -332,33 +332,33 @@ Benchmark;Size;Score (ns/op)
 "pollLastEntry()";80000;0.5301421226997649
 "pollLastEntry()";90000;0.5298382037048533
 "pollLastEntry()";100000;0.5313024826736052
-"put(final K key, final V value)";10000;95.12697678320394
-"put(final K key, final V value)";20000;114.15815038722663
-"put(final K key, final V value)";30000;124.60220369502036
-"put(final K key, final V value)";40000;123.13813881483026
-"put(final K key, final V value)";50000;130.69810218073067
-"put(final K key, final V value)";70000;141.78114507595703
-"put(final K key, final V value)";80000;146.75977052013565
-"put(final K key, final V value)";90000;147.14100248670903
-"put(final K key, final V value)";100000;153.49080465989462
-"putAll(Map<? extends K, ? extends V> m)";10000;1146267.040160129
-"putAll(Map<? extends K, ? extends V> m)";20000;2705561.540462615
-"putAll(Map<? extends K, ? extends V> m)";30000;4449234.678490934
-"putAll(Map<? extends K, ? extends V> m)";40000;7312089.416356399
-"putAll(Map<? extends K, ? extends V> m)";50000;8723429.462107928
-"putAll(Map<? extends K, ? extends V> m)";70000;1.2804403155366167E7
-"putAll(Map<? extends K, ? extends V> m)";80000;1.5062206757872848E7
-"putAll(Map<? extends K, ? extends V> m)";90000;1.7440084064277768E7
-"putAll(Map<? extends K, ? extends V> m)";100000;2.0467876887649573E7
-"remove(final Object key)";10000;2.039534123646504
-"remove(final Object key)";20000;2.206680479848685
-"remove(final Object key)";30000;2.2719798296580116
-"remove(final Object key)";40000;2.2663074454328425
-"remove(final Object key)";50000;2.1801001459070237
-"remove(final Object key)";70000;2.2656293039392765
-"remove(final Object key)";80000;2.2030763112854834
-"remove(final Object key)";90000;2.2762874185332307
-"remove(final Object key)";100000;2.227155722697742
+"put(K, V)";10000;95.12697678320394
+"put(K, V)";20000;114.15815038722663
+"put(K, V)";30000;124.60220369502036
+"put(K, V)";40000;123.13813881483026
+"put(K, V)";50000;130.69810218073067
+"put(K, V)";70000;141.78114507595703
+"put(K, V)";80000;146.75977052013565
+"put(K, V)";90000;147.14100248670903
+"put(K, V)";100000;153.49080465989462
+"putAll(Map)";10000;1146267.040160129
+"putAll(Map)";20000;2705561.540462615
+"putAll(Map)";30000;4449234.678490934
+"putAll(Map)";40000;7312089.416356399
+"putAll(Map)";50000;8723429.462107928
+"putAll(Map)";70000;1.2804403155366167E7
+"putAll(Map)";80000;1.5062206757872848E7
+"putAll(Map)";90000;1.7440084064277768E7
+"putAll(Map)";100000;2.0467876887649573E7
+"remove(Object)";10000;2.039534123646504
+"remove(Object)";20000;2.206680479848685
+"remove(Object)";30000;2.2719798296580116
+"remove(Object)";40000;2.2663074454328425
+"remove(Object)";50000;2.1801001459070237
+"remove(Object)";70000;2.2656293039392765
+"remove(Object)";80000;2.2030763112854834
+"remove(Object)";90000;2.2762874185332307
+"remove(Object)";100000;2.227155722697742
 "size()";10000;0.5578103648100688
 "size()";20000;0.5624987807704952
 "size()";30000;0.5599067403765831
@@ -368,87 +368,87 @@ Benchmark;Size;Score (ns/op)
 "size()";80000;0.5476756280371116
 "size()";90000;0.5528603518897298
 "size()";100000;0.5641289238554767
-"Constructor(final SortedMap<K, ? extends V> m)";10000;600159.8425759809
-"Constructor(final SortedMap<K, ? extends V> m)";20000;1229677.251934912
-"Constructor(final SortedMap<K, ? extends V> m)";30000;2039486.5614980685
-"Constructor(final SortedMap<K, ? extends V> m)";40000;2962176.100137599
-"Constructor(final SortedMap<K, ? extends V> m)";50000;3654390.4118591435
-"Constructor(final SortedMap<K, ? extends V> m)";70000;5305175.509466373
-"Constructor(final SortedMap<K, ? extends V> m)";80000;6116976.99970964
-"Constructor(final SortedMap<K, ? extends V> m)";90000;7280022.834175084
-"Constructor(final SortedMap<K, ? extends V> m)";100000;7905955.984535257
-"subMap(final K fromKey, final boolean fromInclusive, final K toKey, final boolean toInclusive)";10000;1.8855546738185869
-"subMap(final K fromKey, final boolean fromInclusive, final K toKey, final boolean toInclusive)";20000;1.8969316575051172
-"subMap(final K fromKey, final boolean fromInclusive, final K toKey, final boolean toInclusive)";30000;2.0437676695017744
-"subMap(final K fromKey, final boolean fromInclusive, final K toKey, final boolean toInclusive)";40000;2.0647290832564016
-"subMap(final K fromKey, final boolean fromInclusive, final K toKey, final boolean toInclusive)";50000;2.001181875680649
-"subMap(final K fromKey, final boolean fromInclusive, final K toKey, final boolean toInclusive)";70000;2.1581893438046933
-"subMap(final K fromKey, final boolean fromInclusive, final K toKey, final boolean toInclusive)";80000;2.2047283017373385
-"subMap(final K fromKey, final boolean fromInclusive, final K toKey, final boolean toInclusive)";90000;2.36529072637796
-"subMap(final K fromKey, final boolean fromInclusive, final K toKey, final boolean toInclusive)";100000;2.2231472232539677
-"subMap(final K fromKey, final K toKey).entrySet().iterator()";10000;319533.2620830676
-"subMap(final K fromKey, final K toKey).entrySet().iterator()";20000;687019.3929467265
-"subMap(final K fromKey, final K toKey).entrySet().iterator()";30000;929320.1799428727
-"subMap(final K fromKey, final K toKey).entrySet().iterator()";40000;1288794.8439218642
-"subMap(final K fromKey, final K toKey).entrySet().iterator()";50000;1647859.4915643584
-"subMap(final K fromKey, final K toKey).entrySet().iterator()";70000;2361252.5532851773
-"subMap(final K fromKey, final K toKey).entrySet().iterator()";80000;2717543.3149122125
-"subMap(final K fromKey, final K toKey).entrySet().iterator()";90000;3237718.6250307243
-"subMap(final K fromKey, final K toKey).entrySet().iterator()";100000;3392786.5800497946
-"subMap(final K fromKey, final K toKey).keySet().iterator()";10000;311326.68697365635
-"subMap(final K fromKey, final K toKey).keySet().iterator()";20000;666826.0661861583
-"subMap(final K fromKey, final K toKey).keySet().iterator()";30000;991646.3762144787
-"subMap(final K fromKey, final K toKey).keySet().iterator()";40000;1365099.4599939846
-"subMap(final K fromKey, final K toKey).keySet().iterator()";50000;1733375.6961817148
-"subMap(final K fromKey, final K toKey).keySet().iterator()";70000;2404597.3605597587
-"subMap(final K fromKey, final K toKey).keySet().iterator()";80000;2843090.186314232
-"subMap(final K fromKey, final K toKey).keySet().iterator()";90000;3066018.8803064227
-"subMap(final K fromKey, final K toKey).keySet().iterator()";100000;3457615.8427242166
-"subMap(final K fromKey, final K toKey)";10000;1.894097049949807
-"subMap(final K fromKey, final K toKey)";20000;1.901797910216447
-"subMap(final K fromKey, final K toKey)";30000;1.8981679446481008
-"subMap(final K fromKey, final K toKey)";40000;1.8938338494246043
-"subMap(final K fromKey, final K toKey)";50000;2.1121677774101433
-"subMap(final K fromKey, final K toKey)";70000;2.4253233411815054
-"subMap(final K fromKey, final K toKey)";80000;1.982626720291505
-"subMap(final K fromKey, final K toKey)";90000;2.208648774370841
-"subMap(final K fromKey, final K toKey)";100000;1.9814356273301534
-"subMap(final K fromKey, final K toKey).values().iterator()";10000;316331.91075428016
-"subMap(final K fromKey, final K toKey).values().iterator()";20000;665340.5952277695
-"subMap(final K fromKey, final K toKey).values().iterator()";30000;1005418.1876050807
-"subMap(final K fromKey, final K toKey).values().iterator()";40000;1365468.6019535826
-"subMap(final K fromKey, final K toKey).values().iterator()";50000;1703529.7371234868
-"subMap(final K fromKey, final K toKey).values().iterator()";70000;2445414.069858749
-"subMap(final K fromKey, final K toKey).values().iterator()";80000;2839409.926585412
-"subMap(final K fromKey, final K toKey).values().iterator()";90000;3198499.2577166
-"subMap(final K fromKey, final K toKey).values().iterator()";100000;3569819.5191373997
-"tailMap(final K fromKey).entrySet().iterator()";10000;298324.62707715423
-"tailMap(final K fromKey).entrySet().iterator()";20000;611664.7922448018
-"tailMap(final K fromKey).entrySet().iterator()";30000;919968.1409637356
-"tailMap(final K fromKey).entrySet().iterator()";40000;1396572.2690644527
-"tailMap(final K fromKey).entrySet().iterator()";50000;1575792.3402492926
-"tailMap(final K fromKey).entrySet().iterator()";70000;2240102.2100654705
-"tailMap(final K fromKey).entrySet().iterator()";80000;2638118.6998648723
-"tailMap(final K fromKey).entrySet().iterator()";90000;2974985.931063123
-"tailMap(final K fromKey).entrySet().iterator()";100000;3307693.9024162386
-"tailMap(final K fromKey)";10000;2.0221323910616884
-"tailMap(final K fromKey)";20000;1.685176258603241
-"tailMap(final K fromKey)";30000;1.6494465686870985
-"tailMap(final K fromKey)";40000;1.6687900977973953
-"tailMap(final K fromKey)";50000;1.6767131176417192
-"tailMap(final K fromKey)";70000;1.66412911388794
-"tailMap(final K fromKey)";80000;1.776389795465975
-"tailMap(final K fromKey)";90000;1.6741408050484914
-"tailMap(final K fromKey)";100000;1.65180732372904
-"tailMap(final K fromKey, final boolean inclusive)";10000;1.6699534846443473
-"tailMap(final K fromKey, final boolean inclusive)";20000;1.6458273699904498
-"tailMap(final K fromKey, final boolean inclusive)";30000;1.7473383556881716
-"tailMap(final K fromKey, final boolean inclusive)";40000;1.6444913893215538
-"tailMap(final K fromKey, final boolean inclusive)";50000;1.647369929932795
-"tailMap(final K fromKey, final boolean inclusive)";70000;1.6541137949894917
-"tailMap(final K fromKey, final boolean inclusive)";80000;1.6483476035171283
-"tailMap(final K fromKey, final boolean inclusive)";90000;1.6736937630454545
-"tailMap(final K fromKey, final boolean inclusive)";100000;1.6771423721313206
+"Constructor(SortedMap)";10000;600159.8425759809
+"Constructor(SortedMap)";20000;1229677.251934912
+"Constructor(SortedMap)";30000;2039486.5614980685
+"Constructor(SortedMap)";40000;2962176.100137599
+"Constructor(SortedMap)";50000;3654390.4118591435
+"Constructor(SortedMap)";70000;5305175.509466373
+"Constructor(SortedMap)";80000;6116976.99970964
+"Constructor(SortedMap)";90000;7280022.834175084
+"Constructor(SortedMap)";100000;7905955.984535257
+"subMap(K, boolean, K, boolean)";10000;1.8855546738185869
+"subMap(K, boolean, K, boolean)";20000;1.8969316575051172
+"subMap(K, boolean, K, boolean)";30000;2.0437676695017744
+"subMap(K, boolean, K, boolean)";40000;2.0647290832564016
+"subMap(K, boolean, K, boolean)";50000;2.001181875680649
+"subMap(K, boolean, K, boolean)";70000;2.1581893438046933
+"subMap(K, boolean, K, boolean)";80000;2.2047283017373385
+"subMap(K, boolean, K, boolean)";90000;2.36529072637796
+"subMap(K, boolean, K, boolean)";100000;2.2231472232539677
+"subMap(K, K).entrySet().iterator()";10000;319533.2620830676
+"subMap(K, K).entrySet().iterator()";20000;687019.3929467265
+"subMap(K, K).entrySet().iterator()";30000;929320.1799428727
+"subMap(K, K).entrySet().iterator()";40000;1288794.8439218642
+"subMap(K, K).entrySet().iterator()";50000;1647859.4915643584
+"subMap(K, K).entrySet().iterator()";70000;2361252.5532851773
+"subMap(K, K).entrySet().iterator()";80000;2717543.3149122125
+"subMap(K, K).entrySet().iterator()";90000;3237718.6250307243
+"subMap(K, K).entrySet().iterator()";100000;3392786.5800497946
+"subMap(K, K).keySet().iterator()";10000;311326.68697365635
+"subMap(K, K).keySet().iterator()";20000;666826.0661861583
+"subMap(K, K).keySet().iterator()";30000;991646.3762144787
+"subMap(K, K).keySet().iterator()";40000;1365099.4599939846
+"subMap(K, K).keySet().iterator()";50000;1733375.6961817148
+"subMap(K, K).keySet().iterator()";70000;2404597.3605597587
+"subMap(K, K).keySet().iterator()";80000;2843090.186314232
+"subMap(K, K).keySet().iterator()";90000;3066018.8803064227
+"subMap(K, K).keySet().iterator()";100000;3457615.8427242166
+"subMap(K, K)";10000;1.894097049949807
+"subMap(K, K)";20000;1.901797910216447
+"subMap(K, K)";30000;1.8981679446481008
+"subMap(K, K)";40000;1.8938338494246043
+"subMap(K, K)";50000;2.1121677774101433
+"subMap(K, K)";70000;2.4253233411815054
+"subMap(K, K)";80000;1.982626720291505
+"subMap(K, K)";90000;2.208648774370841
+"subMap(K, K)";100000;1.9814356273301534
+"subMap(K, K).values().iterator()";10000;316331.91075428016
+"subMap(K, K).values().iterator()";20000;665340.5952277695
+"subMap(K, K).values().iterator()";30000;1005418.1876050807
+"subMap(K, K).values().iterator()";40000;1365468.6019535826
+"subMap(K, K).values().iterator()";50000;1703529.7371234868
+"subMap(K, K).values().iterator()";70000;2445414.069858749
+"subMap(K, K).values().iterator()";80000;2839409.926585412
+"subMap(K, K).values().iterator()";90000;3198499.2577166
+"subMap(K, K).values().iterator()";100000;3569819.5191373997
+"tailMap(K).entrySet().iterator()";10000;298324.62707715423
+"tailMap(K).entrySet().iterator()";20000;611664.7922448018
+"tailMap(K).entrySet().iterator()";30000;919968.1409637356
+"tailMap(K).entrySet().iterator()";40000;1396572.2690644527
+"tailMap(K).entrySet().iterator()";50000;1575792.3402492926
+"tailMap(K).entrySet().iterator()";70000;2240102.2100654705
+"tailMap(K).entrySet().iterator()";80000;2638118.6998648723
+"tailMap(K).entrySet().iterator()";90000;2974985.931063123
+"tailMap(K).entrySet().iterator()";100000;3307693.9024162386
+"tailMap(K)";10000;2.0221323910616884
+"tailMap(K)";20000;1.685176258603241
+"tailMap(K)";30000;1.6494465686870985
+"tailMap(K)";40000;1.6687900977973953
+"tailMap(K)";50000;1.6767131176417192
+"tailMap(K)";70000;1.66412911388794
+"tailMap(K)";80000;1.776389795465975
+"tailMap(K)";90000;1.6741408050484914
+"tailMap(K)";100000;1.65180732372904
+"tailMap(K, boolean)";10000;1.6699534846443473
+"tailMap(K, boolean)";20000;1.6458273699904498
+"tailMap(K, boolean)";30000;1.7473383556881716
+"tailMap(K, boolean)";40000;1.6444913893215538
+"tailMap(K, boolean)";50000;1.647369929932795
+"tailMap(K, boolean)";70000;1.6541137949894917
+"tailMap(K, boolean)";80000;1.6483476035171283
+"tailMap(K, boolean)";90000;1.6736937630454545
+"tailMap(K, boolean)";100000;1.6771423721313206
 "values()";10000;0.545766020439398
 "values()";20000;0.5633037852345323
 "values()";30000;0.5494748432544015
