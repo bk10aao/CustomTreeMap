@@ -75,7 +75,6 @@ public class TreeMapPerformanceTest {
             populatedSortedMap.put(key, key);
         }
 
-        // Pre-compute sorted range keys to prevent IllegalArgumentException (fromKey > toKey)
         minKey = populatedSortedMap.firstKey();
         maxKey = populatedSortedMap.lastKey();
         List<Integer> sortedList = new ArrayList<>(populatedSortedMap.keySet());

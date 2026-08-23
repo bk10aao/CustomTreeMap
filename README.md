@@ -90,7 +90,7 @@ To test the project run command `./gradlew test`
 | **tailMap(K)**                     |   $O(1)$    |  $O(1)$  |  Tie   |
 | **tailMap(K, boolean)**            |   $O(1)$    |  $O(1)$  |  Tie   |
 
-# CustomTreeMap vs JDK TreeMap: Performance Comparison
+# Performance Comparison
 
 Geometric mean (ns/op) across all tested collection sizes (10,000-100,000 elements). Margins under 1.10x are treated as noise-level ties since the source data has no per-run error/variance to test true statistical significance.
 
