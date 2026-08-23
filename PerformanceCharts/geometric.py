@@ -49,8 +49,8 @@ sorted_colors = [colors[idx] for idx in sorted_indices]
 min_ratio = min(sorted_ratios)
 max_ratio = max(sorted_ratios)
 # Extra margin on sides so annotations fit cleanly
-left_limit = min_ratio - 0.4
-right_limit = max_ratio + 0.4
+left_limit = min_ratio - 0.1
+right_limit = max_ratio + 0.1
 fig_height = max(6, len(methods) * 0.45)
 fig, ax = plt.subplots(figsize=(12, fig_height), facecolor='none')
 ax.set_facecolor('none')
