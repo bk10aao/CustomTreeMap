@@ -50,7 +50,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
     private static final boolean RED = true;
 
     /**
-     * Marker used for the color of a black node. Also the color of a {@code null} (absent) node.
+     * Marker used for the color of a black node. Also, the color of a {@code null} (absent) node.
      */
     private static final boolean BLACK = false;
 

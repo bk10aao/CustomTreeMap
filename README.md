@@ -2,7 +2,7 @@
 
 An implementation of a Java TreeMap using a Red-Black Tree.
 
-All methods implemented are identical to those found in the Java Map interface.
+All methods implemented are identical to those found in the Java NavigableMap interface.
 
 # Build and Test
 
