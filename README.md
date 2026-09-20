@@ -12,7 +12,7 @@ To test the project run command `./gradlew test`
 
 ### Time Complexity
 
-| Operation / Method                 |    Custom     |      JDK      | Winner  |
+| Method                             |    Custom     |      JDK      | Winner  |
 |:-----------------------------------|:-------------:|:-------------:|:-------:|
 | **CustomTreeMap()**                |    $O(1)$     |    $O(1)$     |   Tie   |
 | **CustomTreeMap(Comparator)**      |    $O(1)$     |    $O(1)$     |   Tie   |
@@ -52,43 +52,43 @@ To test the project run command `./gradlew test`
 
 ### Space Complexity
 
-| Operation / Method                 |   Custom    |   JDK    | Winner |
-|:-----------------------------------|:-----------:|:--------:|:------:|
-| **CustomTreeMap()**                |   $O(1)$    |  $O(1)$  |  Tie   |
-| **CustomTreeMap(Comparator)**      |   $O(1)$    |  $O(1)$  |  Tie   |
-| **CustomTreeMap(Map)**             |   $O(1)$    |  $O(1)$  |  Tie   |
-| **CustomTreeMap(SortedMap)**       |   $O(1)$    |  $O(1)$  |  Tie   |
-| **ceilingEntry(K)**                |   $O(1)$    |  $O(1)$  |  Tie   |
-| **ceilingKey(K)**                  |   $O(1)$    |  $O(1)$  |  Tie   |
-| **clear()**                        |   $O(1)$    |  $O(1)$  |  Tie   |
-| **comparator()**                   |   $O(1)$    |  $O(1)$  |  Tie   |
-| **containsKey(Object)**            |   $O(1)$    |  $O(1)$  |  Tie   |
-| **descendingKeySet()**             |   $O(1)$    |  $O(1)$  |  Tie   |
-| **descendingMap()**                |   $O(1)$    |  $O(1)$  |  Tie   |
-| **entrySet()**                     |   $O(1)$    |  $O(1)$  |  Tie   |
-| **firstEntry()**                   |   $O(1)$    |  $O(1)$  |  Tie   |
-| **firstKey()**                     |   $O(1)$    |  $O(1)$  |  Tie   |
-| **floorEntry(K)**                  |   $O(1)$    |  $O(1)$  |  Tie   |
-| **floorKey(K)**                    |   $O(1)$    |  $O(1)$  |  Tie   |
-| **get(Object)**                    |   $O(1)$    |  $O(1)$  |  Tie   |
-| **headMap(K)**                     |   $O(1)$    |  $O(1)$  |  Tie   |
-| **headMap(K, boolean)**            |   $O(1)$    |  $O(1)$  |  Tie   |
-| **higherEntry(K)**                 |   $O(1)$    |  $O(1)$  |  Tie   |
-| **higherKey(K)**                   |   $O(1)$    |  $O(1)$  |  Tie   |
-| **lastEntry()**                    |   $O(1)$    |  $O(1)$  |  Tie   |
-| **lastKey()**                      |   $O(1)$    |  $O(1)$  |  Tie   |
-| **lowerEntry(K)**                  |   $O(1)$    |  $O(1)$  |  Tie   |
-| **lowerKey(K)**                    |   $O(1)$    |  $O(1)$  |  Tie   |
-| **navigableKeySet()**              |   $O(1)$    |  $O(1)$  |  Tie   |
-| **pollFirstEntry()**               |   $O(1)$    |  $O(1)$  |  Tie   |
-| **pollLastEntry()**                |   $O(1)$    |  $O(1)$  |  Tie   |
-| **put(K, V)**                      |   $O(1)$    |  $O(1)$  |  Tie   |
-| **remove(Object)**                 |   $O(1)$    |  $O(1)$  |  Tie   |
-| **size()**                         |   $O(1)$    |  $O(1)$  |  Tie   |
-| **subMap(K, K)**                   |   $O(1)$    |  $O(1)$  |  Tie   |
-| **subMap(K, boolean, K, boolean)** |   $O(1)$    |  $O(1)$  |  Tie   |
-| **tailMap(K)**                     |   $O(1)$    |  $O(1)$  |  Tie   |
-| **tailMap(K, boolean)**            |   $O(1)$    |  $O(1)$  |  Tie   |
+| Method                             | Custom |  JDK   | Winner |
+|:-----------------------------------|:------:|:------:|:------:|
+| **CustomTreeMap()**                | $O(1)$ | $O(1)$ |  Tie   |
+| **CustomTreeMap(Comparator)**      | $O(1)$ | $O(1)$ |  Tie   |
+| **CustomTreeMap(Map)**             | $O(1)$ | $O(1)$ |  Tie   |
+| **CustomTreeMap(SortedMap)**       | $O(1)$ | $O(1)$ |  Tie   |
+| **ceilingEntry(K)**                | $O(1)$ | $O(1)$ |  Tie   |
+| **ceilingKey(K)**                  | $O(1)$ | $O(1)$ |  Tie   |
+| **clear()**                        | $O(1)$ | $O(1)$ |  Tie   |
+| **comparator()**                   | $O(1)$ | $O(1)$ |  Tie   |
+| **containsKey(Object)**            | $O(1)$ | $O(1)$ |  Tie   |
+| **descendingKeySet()**             | $O(1)$ | $O(1)$ |  Tie   |
+| **descendingMap()**                | $O(1)$ | $O(1)$ |  Tie   |
+| **entrySet()**                     | $O(1)$ | $O(1)$ |  Tie   |
+| **firstEntry()**                   | $O(1)$ | $O(1)$ |  Tie   |
+| **firstKey()**                     | $O(1)$ | $O(1)$ |  Tie   |
+| **floorEntry(K)**                  | $O(1)$ | $O(1)$ |  Tie   |
+| **floorKey(K)**                    | $O(1)$ | $O(1)$ |  Tie   |
+| **get(Object)**                    | $O(1)$ | $O(1)$ |  Tie   |
+| **headMap(K)**                     | $O(1)$ | $O(1)$ |  Tie   |
+| **headMap(K, boolean)**            | $O(1)$ | $O(1)$ |  Tie   |
+| **higherEntry(K)**                 | $O(1)$ | $O(1)$ |  Tie   |
+| **higherKey(K)**                   | $O(1)$ | $O(1)$ |  Tie   |
+| **lastEntry()**                    | $O(1)$ | $O(1)$ |  Tie   |
+| **lastKey()**                      | $O(1)$ | $O(1)$ |  Tie   |
+| **lowerEntry(K)**                  | $O(1)$ | $O(1)$ |  Tie   |
+| **lowerKey(K)**                    | $O(1)$ | $O(1)$ |  Tie   |
+| **navigableKeySet()**              | $O(1)$ | $O(1)$ |  Tie   |
+| **pollFirstEntry()**               | $O(1)$ | $O(1)$ |  Tie   |
+| **pollLastEntry()**                | $O(1)$ | $O(1)$ |  Tie   |
+| **put(K, V)**                      | $O(1)$ | $O(1)$ |  Tie   |
+| **remove(Object)**                 | $O(1)$ | $O(1)$ |  Tie   |
+| **size()**                         | $O(1)$ | $O(1)$ |  Tie   |
+| **subMap(K, K)**                   | $O(1)$ | $O(1)$ |  Tie   |
+| **subMap(K, boolean, K, boolean)** | $O(1)$ | $O(1)$ |  Tie   |
+| **tailMap(K)**                     | $O(1)$ | $O(1)$ |  Tie   |
+| **tailMap(K, boolean)**            | $O(1)$ | $O(1)$ |  Tie   |
 
 # Performance Comparison
 
@@ -96,58 +96,58 @@ Geometric mean (ns/op) across all tested collection sizes (10,000-100,000 elemen
 
 | Method                                                                   | Custom (ns) | JDK (ns)    | Margin |            Winner            |
 |:-------------------------------------------------------------------------|:------------|:------------|:------:|:----------------------------:|
-| `Constructor()`                                                          | 4.9         | 5           | 1.02x  | **Statistically Equivalent** |
-| `Constructor(Comparator<? super K> comparator)`                          | 1.5         | 1.5         | 1.00x  | **Statistically Equivalent** |
-| `Constructor(Map<? extends K, ? extends V> m)`                           | 6,805,107.7 | 6,749,178.3 | 1.01x  | **Statistically Equivalent** |
-| `Constructor(SortedMap<K, ? extends V> m)`                               | 3,148,818.4 | 3,430,996.9 | 1.09x  | **Statistically Equivalent** |
-| `ceilingEntry(K key)`                                                    | 218.4       | 211.2       | 1.03x  | **Statistically Equivalent** |
-| `ceilingKey(K key)`                                                      | 129.8       | 122.8       | 1.06x  | **Statistically Equivalent** |
-| `clear()`                                                                | 0.556       | 0.531       | 1.05x  | **Statistically Equivalent** |
-| `comparator()`                                                           | 0.553       | 0.531       | 1.04x  | **Statistically Equivalent** |
-| `containsKey(Object key)`                                                | 126.4       | 124.6       | 1.01x  | **Statistically Equivalent** |
-| `containsValue(Object value)`                                            | 1,376,460.4 | 1,368,072.3 | 1.01x  | **Statistically Equivalent** |
-| `descendingKeySet()`                                                     | 2.7         | 2.6         | 1.02x  | **Statistically Equivalent** |
-| `descendingKeySet().iterator()`                                          | 2,803,580.2 | 2,804,631.7 | 1.00x  | **Statistically Equivalent** |
-| `descendingMap()`                                                        | 1.5         | 1.5         | 1.00x  | **Statistically Equivalent** |
-| `descendingMap().entrySet().iterator()`                                  | 2,803,122.1 | 2,693,871.7 | 1.04x  | **Statistically Equivalent** |
-| `entrySet()`                                                             | 1.3         | 1.3         | 1.00x  | **Statistically Equivalent** |
-| `entrySet().iterator()`                                                  | 2,665,182   | 2,670,758.9 | 1.00x  | **Statistically Equivalent** |
-| `firstEntry()`                                                           | 27          | 26.8        | 1.01x  | **Statistically Equivalent** |
-| `firstKey()`                                                             | 9.8         | 9.8         | 1.00x  | **Statistically Equivalent** |
-| `floorEntry(K key)`                                                      | 212.5       | 212.2       | 1.00x  | **Statistically Equivalent** |
-| `floorKey(K key)`                                                        | 125.1       | 125         | 1.00x  | **Statistically Equivalent** |
-| `get(Object key)`                                                        | 125.1       | 124.3       | 1.01x  | **Statistically Equivalent** |
-| `headMap(K toKey)`                                                       | 1.8         | 1.8         | 1.00x  | **Statistically Equivalent** |
-| `headMap(K toKey).entrySet().iterator()`                                 | 1,401,393.3 | 1,398,458.7 | 1.00x  | **Statistically Equivalent** |
-| `headMap(K toKey, boolean inclusive)`                                    | 2           | 2           | 1.00x  | **Statistically Equivalent** |
-| `higherEntry(K key)`                                                     | 229.1       | 226.6       | 1.01x  | **Statistically Equivalent** |
-| `higherKey(K key)`                                                       | 101.9       | 97.9        | 1.04x  | **Statistically Equivalent** |
-| `isEmpty()`                                                              | 0.544       | 0.528       | 1.03x  | **Statistically Equivalent** |
-| `keySet()`                                                               | 0.548       | 0.532       | 1.03x  | **Statistically Equivalent** |
-| `keySet().iterator()`                                                    | 2,785,238.2 | 2,762,890   | 1.01x  | **Statistically Equivalent** |
-| `lastEntry()`                                                            | 28.2        | 33.4        | 1.18x  |          **Custom**          |
-| `lastKey()`                                                              | 10.3        | 10.1        | 1.02x  | **Statistically Equivalent** |
-| `lowerEntry(K key)`                                                      | 236.2       | 225.1       | 1.05x  | **Statistically Equivalent** |
-| `lowerKey(K key)`                                                        | 140.3       | 135.9       | 1.03x  | **Statistically Equivalent** |
-| `navigableKeySet()`                                                      | 1.3         | 1.4         | 1.01x  | **Statistically Equivalent** |
-| `navigableKeySet().descendingIterator()`                                 | 2,976,257.3 | 2,984,993.5 | 1.00x  | **Statistically Equivalent** |
-| `navigableKeySet().iterator()`                                           | 2,847,756.4 | 2,839,952.3 | 1.00x  | **Statistically Equivalent** |
-| `pollFirstEntry()`                                                       | 0.556       | 0.546       | 1.02x  | **Statistically Equivalent** |
-| `pollLastEntry()`                                                        | 0.538       | 0.623       | 1.16x  |          **Custom**          |
-| `put(K key, V value)`                                                    | 129.5       | 132.6       | 1.02x  | **Statistically Equivalent** |
-| `putAll(Map<? extends K, ? extends V> m)`                                | 7,323,422.1 | 7,055,239.7 | 1.04x  | **Statistically Equivalent** |
-| `remove(Object key)`                                                     | 2.2         | 2.9         | 1.32x  |          **Custom**          |
-| `size()`                                                                 | 0.555       | 0.554       | 1.00x  | **Statistically Equivalent** |
-| `subMap(K fromKey, K toKey)`                                             | 2           | 2.1         | 1.02x  | **Statistically Equivalent** |
-| `subMap(K fromKey, K toKey).entrySet().iterator()`                       | 1,462,128.2 | 1,521,866.6 | 1.04x  | **Statistically Equivalent** |
-| `subMap(K fromKey, K toKey).keySet().iterator()`                         | 1,485,870.0 | 1,554,680.6 | 1.05x  | **Statistically Equivalent** |
-| `subMap(K fromKey, K toKey).values().iterator()`                         | 1,502,503.0 | 1,528,133.5 | 1.02x  | **Statistically Equivalent** |
-| `subMap(K fromKey, boolean fromInclusive, K toKey, boolean toInclusive)` | 2.1         | 2           | 1.03x  | **Statistically Equivalent** |
-| `tailMap(K fromKey)`                                                     | 1.7         | 1.8         | 1.06x  | **Statistically Equivalent** |
-| `tailMap(K fromKey).entrySet().iterator()`                               | 1,406,087.2 | 1,439,058.8 | 1.02x  | **Statistically Equivalent** |
-| `tailMap(K fromKey, boolean inclusive)`                                  | 1.7         | 1.7         | 1.02x  | **Statistically Equivalent** |
-| `values()`                                                               | 0.548       | 0.579       | 1.06x  | **Statistically Equivalent** |
-| `values().iterator()`                                                    | 2,815,112.4 | 2,871,449.8 | 1.02x  | **Statistically Equivalent** |
+| `Constructor()`                                                          | 2.0         | 2.0         | 1.00x  | **Statistically Equivalent** |
+| `Constructor(Comparator<? super K> comparator)`                          | 2.0         | 2.0         | 1.00x  | **Statistically Equivalent** |
+| `Constructor(Map<? extends K, ? extends V> m)`                           | 8,798,339.4 | 8,727,063.2 | 0.99x  | **Statistically Equivalent** |
+| `Constructor(SortedMap<K, ? V extends> m)`                               | 636,274.6   | 596,410.1   | 0.94x  | **Statistically Equivalent** |
+| `ceilingEntry(K key)`                                                    | 124.9       | 124.8       | 1.00x  | **Statistically Equivalent** |
+| `ceilingKey(K key)`                                                      | 123.9       | 124.8       | 1.01x  | **Statistically Equivalent** |
+| `clear()`                                                                | 1.0         | 2.0         | 2.00x  | **Statistically Equivalent** |
+| `comparator()`                                                           | 1.0         | 1.0         | 1.00x  | **Statistically Equivalent** |
+| `containsKey(Object key)`                                                | 123.9       | 124.4       | 1.00x  | **Statistically Equivalent** |
+| `containsValue(Object value)`                                            | 275,459.8   | 270,584.3   | 0.98x  | **Statistically Equivalent** |
+| `descendingKeySet()`                                                     | 1.0         | 1.0         | 1.00x  | **Statistically Equivalent** |
+| `descendingKeySet().iterator()`                                          | 749,422.3   | 734,067.4   | 0.98x  | **Statistically Equivalent** |
+| `descendingMap()`                                                        | 1.0         | 1.0         | 1.00x  | **Statistically Equivalent** |
+| `descendingMap().entrySet().iterator()`                                  | 564,605.9   | 571,516.9   | 1.01x  | **Statistically Equivalent** |
+| `entrySet()`                                                             | 1.0         | 1.0         | 1.00x  | **Statistically Equivalent** |
+| `entrySet().iterator()`                                                  | 529,135.1   | 537,478.0   | 1.02x  | **Statistically Equivalent** |
+| `firstEntry()`                                                           | 10.4        | 10.3        | 0.99x  | **Statistically Equivalent** |
+| `firstKey()`                                                             | 10.0        | 9.3         | 0.93x  | **Statistically Equivalent** |
+| `floorEntry(K key)`                                                      | 124.3       | 123.6       | 0.99x  | **Statistically Equivalent** |
+| `floorKey(K key)`                                                        | 124.4       | 124.9       | 1.00x  | **Statistically Equivalent** |
+| `get(Object key)`                                                        | 124.1       | 124.0       | 1.00x  | **Statistically Equivalent** |
+| `headMap(K toKey)`                                                       | 3.0         | 3.0         | 1.00x  | **Statistically Equivalent** |
+| `headMap(K toKey).entrySet().iterator()`                                 | 273,277.7   | 273,666.7   | 1.00x  | **Statistically Equivalent** |
+| `headMap(K toKey, boolean inclusive)`                                    | 3.0         | 3.0         | 1.00x  | **Statistically Equivalent** |
+| `higherEntry(K key)`                                                     | 95.0        | 131.8       | 1.39x  |          **Custom**          |
+| `higherKey(K key)`                                                       | 94.0        | 133.8       | 1.42x  |          **Custom**          |
+| `isEmpty()`                                                              | 1.0         | 1.0         | 1.00x  | **Statistically Equivalent** |
+| `keySet()`                                                               | 1.0         | 1.0         | 1.00x  | **Statistically Equivalent** |
+| `keySet().iterator()`                                                    | 557,607.0   | 531,615.7   | 0.95x  | **Statistically Equivalent** |
+| `lastEntry()`                                                            | 10.6        | 10.6        | 1.00x  | **Statistically Equivalent** |
+| `lastKey()`                                                              | 10.4        | 9.6         | 0.91x  | **Statistically Equivalent** |
+| `lowerEntry(K key)`                                                      | 133.7       | 129.4       | 0.97x  | **Statistically Equivalent** |
+| `lowerKey(K key)`                                                        | 133.4       | 129.3       | 0.97x  | **Statistically Equivalent** |
+| `navigableKeySet()`                                                      | 1.0         | 1.0         | 1.00x  | **Statistically Equivalent** |
+| `navigableKeySet().descendingIterator()`                                 | 561,087.3   | 543,528.0   | 0.97x  | **Statistically Equivalent** |
+| `navigableKeySet().iterator()`                                           | 560,871.7   | 540,691.8   | 0.96x  | **Statistically Equivalent** |
+| `pollFirstEntry()`                                                       | 1.0         | 1.0         | 1.00x  | **Statistically Equivalent** |
+| `pollLastEntry()`                                                        | 1.0         | 1.0         | 1.00x  | **Statistically Equivalent** |
+| `put(K key, V value)`                                                    | 128.4       | 127.7       | 0.99x  | **Statistically Equivalent** |
+| `putAll(Map<? extends K, ? extends V> m)`                                | 8,769,377.6 | 8,719,015.3 | 0.99x  | **Statistically Equivalent** |
+| `remove(Object key)`                                                     | 2.0         | 2.9         | 1.44x  | **Statistically Equivalent** |
+| `size()`                                                                 | 1.0         | 1.0         | 1.00x  | **Statistically Equivalent** |
+| `subMap(K fromKey, K toKey)`                                             | 4.0         | 3.0         | 0.75x  | **Statistically Equivalent** |
+| `subMap(K fromKey, K toKey).entrySet().iterator()`                       | 274,273.9   | 276,270.6   | 1.01x  | **Statistically Equivalent** |
+| `subMap(K fromKey, K toKey).keySet().iterator()`                         | 368,639.8   | 361,428.8   | 0.98x  | **Statistically Equivalent** |
+| `subMap(K fromKey, K toKey).values().iterator()`                         | 353,644.9   | 355,371.9   | 1.00x  | **Statistically Equivalent** |
+| `subMap(K fromKey, boolean fromInclusive, K toKey, boolean toInclusive)` | 4.0         | 3.0         | 0.75x  | **Statistically Equivalent** |
+| `tailMap(K fromKey)`                                                     | 3.0         | 3.0         | 1.00x  | **Statistically Equivalent** |
+| `tailMap(K fromKey).entrySet().iterator()`                               | 271,937.9   | 272,774.4   | 1.00x  | **Statistically Equivalent** |
+| `tailMap(K fromKey, boolean inclusive)`                                  | 3.0         | 3.0         | 1.00x  | **Statistically Equivalent** |
+| `values()`                                                               | 1.0         | 1.0         | 1.00x  | **Statistically Equivalent** |
+| `values().iterator()`                                                    | 713,708.8   | 538,075.9   | 0.75x  |           **JDK**            |
 
 # Performance Charts
 
@@ -155,10 +155,10 @@ Geometric mean (ns/op) across all tested collection sizes (10,000-100,000 elemen
 
 ![GeometricPerformance](PerformanceCharts/geometric.png)
 ![Heatmap](PerformanceCharts/heatmap.png)
-![Chart](PerformanceCharts/TreeMap.png)
-![Chart](PerformanceCharts/TreeMap_Comparator.png)
-![Chart](PerformanceCharts/TreeMap_Map.png)
-![Chart](PerformanceCharts/TreeMap_SortedMap.png)
+![Chart](PerformanceCharts/CustomTreeMap.png)
+![Chart](PerformanceCharts/CustomTreeMap_Comparator.png)
+![Chart](PerformanceCharts/CustomTreeMap_Map.png)
+![Chart](PerformanceCharts/CustomTreeMap_SortedMap.png)
 ![Chart](PerformanceCharts/ceilingEntry_K.png)
 ![Chart](PerformanceCharts/ceilingKey_K.png)
 ![Chart](PerformanceCharts/clear.png)
@@ -176,9 +176,9 @@ Geometric mean (ns/op) across all tested collection sizes (10,000-100,000 elemen
 ![Chart](PerformanceCharts/floorEntry_K.png)
 ![Chart](PerformanceCharts/floorKey_K.png)
 ![Chart](PerformanceCharts/get_Object.png)
+![Chart](PerformanceCharts/headMap_iterator.png)
 ![Chart](PerformanceCharts/headMap_K.png)
 ![Chart](PerformanceCharts/headMap_K_boolean.png)
-![Chart](PerformanceCharts/headMap_K_iterator.png)
 ![Chart](PerformanceCharts/higherEntry_K.png)
 ![Chart](PerformanceCharts/higherKey_K.png)
 ![Chart](PerformanceCharts/isEmpty.png)
@@ -197,13 +197,13 @@ Geometric mean (ns/op) across all tested collection sizes (10,000-100,000 elemen
 ![Chart](PerformanceCharts/putAll_Map.png)
 ![Chart](PerformanceCharts/remove_Object.png)
 ![Chart](PerformanceCharts/size.png)
+![Chart](PerformanceCharts/subMap_iterator.png)
+![Chart](PerformanceCharts/subMap_keySet_iterator.png)
+![Chart](PerformanceCharts/subMap_values_iterator.png)
 ![Chart](PerformanceCharts/subMap_K_K.png)
-![Chart](PerformanceCharts/subMap_K_K_entrySet_iterator.png)
-![Chart](PerformanceCharts/subMap_K_K_keySet_iterator.png)
-![Chart](PerformanceCharts/subMap_K_K_values_iterator.png)
 ![Chart](PerformanceCharts/subMap_K_boolean_K_boolean.png)
+![Chart](PerformanceCharts/tailMap_iterator.png)
 ![Chart](PerformanceCharts/tailMap_K.png)
 ![Chart](PerformanceCharts/tailMap_K_boolean.png)
-![Chart](PerformanceCharts/tailMap_K_iterator.png)
 ![Chart](PerformanceCharts/values.png)
 ![Chart](PerformanceCharts/values_iterator.png)

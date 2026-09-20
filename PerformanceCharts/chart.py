@@ -5,6 +5,7 @@ with a transparent background.
 """
 
 import matplotlib
+
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
@@ -25,12 +26,13 @@ OUTPUT_DIR = "charts"
 
 COLORS = {
     'purple': '#9B6EF3',  # CustomTreeMap
-    'blue': '#4DA6FF',    # JDK TreeMap
+    'blue': '#4DA6FF',  # JDK TreeMap
     'grid': '#252525',
 }
 
 FIGURE_SIZE = (12, 6.2)
 DPI = 150
+
 
 # Map full CSV signature labels -> short chart title / filename-safe key
 def canonicalize(name: str) -> str:
@@ -40,73 +42,140 @@ def canonicalize(name: str) -> str:
     # Already-short common forms
     aliases = {
         # constructors (CustomTreeMap / TreeMap / Constructor prefixes)
-        'CustomTreeMap()': 'TreeMap()',
+        'CustomTreeMap()': 'CustomTreeMap()',
         'TreeMap()': 'TreeMap()',
-        'Constructor()': 'TreeMap()',
-        'CustomTreeMap(final Comparator<? super K> comparator)': 'TreeMap(Comparator)',
-        'TreeMap(final Comparator<? super K> comparator)': 'TreeMap(Comparator)',
-        'Constructor(final Comparator<? super K> comparator)': 'TreeMap(Comparator)',
-        'CustomTreeMap(final Map<? extends K, ? extends V> m)': 'TreeMap(Map)',
-        'TreeMap(final Map<? extends K, ? extends V> m)': 'TreeMap(Map)',
-        'Constructor(final Map<? extends K, ? extends V> m)': 'TreeMap(Map)',
-        'CustomTreeMap(final SortedMap<K, ? extends V> m)': 'TreeMap(SortedMap)',
-        'TreeMap(final SortedMap<K, ? extends V> m)': 'TreeMap(SortedMap)',
-        'Constructor(final SortedMap<K, ? extends V> m)': 'TreeMap(SortedMap)',
+        'Constructor()': 'CustomTreeMap()',
+        'testDefaultConstructor': 'CustomTreeMap()',
+
+        'CustomTreeMap(final Comparator<? super K> comparator)': 'CustomTreeMap(Comparator)',
+        'TreeMap(final Comparator<? super K> comparator)': 'CustomTreeMap(Comparator)',
+        'Constructor(final Comparator<? super K> comparator)': 'CustomTreeMap(Comparator)',
+        'testComparatorConstructor': 'CustomTreeMap(Comparator)',
+
+        'CustomTreeMap(final Map<? extends K, ? extends V> m)': 'CustomTreeMap(Map)',
+        'TreeMap(final Map<? extends K, ? extends V> m)': 'CustomTreeMap(Map)',
+        'Constructor(final Map<? extends K, ? extends V> m)': 'CustomTreeMap(Map)',
+        'testMapConstructor': 'CustomTreeMap(Map)',
+
+        'CustomTreeMap(final SortedMap<K, ? extends V> m)': 'CustomTreeMap(SortedMap)',
+        'TreeMap(final SortedMap<K, ? extends V> m)': 'CustomTreeMap(SortedMap)',
+        'Constructor(final SortedMap<K, ? extends V> m)': 'CustomTreeMap(SortedMap)',
+        'testSortedMapConstructor': 'CustomTreeMap(SortedMap)',
+
         # core
         'put(final K key, final V value)': 'put(K, V)',
+        'testPut': 'put(K, V)',
         'get(final Object key)': 'get(Object)',
+        'testGet': 'get(Object)',
         'remove(final Object key)': 'remove(Object)',
+        'testRemove': 'remove(Object)',
         'containsKey(final Object key)': 'containsKey(Object)',
+        'testContainsKey': 'containsKey(Object)',
         'containsValue(final Object value)': 'containsValue(Object)',
+        'testContainsValue': 'containsValue(Object)',
         'clear()': 'clear()',
+        'testClear': 'clear()',
         'size()': 'size()',
+        'testSize': 'size()',
         'isEmpty()': 'isEmpty()',
+        'testIsEmpty': 'isEmpty()',
         'comparator()': 'comparator()',
+        'testComparator': 'comparator()',
         'putAll(Map<? extends K, ? extends V> m)': 'putAll(Map)',
-        # navigable
+        'testPutAll': 'putAll(Map)',
+
+        # navigable & bounds
         'ceilingEntry(final K key)': 'ceilingEntry(K)',
+        'testCeilingEntry': 'ceilingEntry(K)',
         'ceilingKey(final K key)': 'ceilingKey(K)',
+        'testCeilingKey': 'ceilingKey(K)',
         'floorEntry(final K key)': 'floorEntry(K)',
+        'testFloorEntry': 'floorEntry(K)',
         'floorKey(final K key)': 'floorKey(K)',
+        'testFloorKey': 'floorKey(K)',
         'higherEntry(final K key)': 'higherEntry(K)',
+        'testHigherEntry': 'higherEntry(K)',
         'higherKey(final K key)': 'higherKey(K)',
+        'testHigherKey': 'higherKey(K)',
         'lowerEntry(final K key)': 'lowerEntry(K)',
+        'testLowerEntry': 'lowerEntry(K)',
         'lowerKey(final K key)': 'lowerKey(K)',
+        'testLowerKey': 'lowerKey(K)',
         'firstEntry()': 'firstEntry()',
+        'testFirstEntry': 'firstEntry()',
         'firstKey()': 'firstKey()',
+        'testFirstKey': 'firstKey()',
         'lastEntry()': 'lastEntry()',
+        'testLastEntry': 'lastEntry()',
         'lastKey()': 'lastKey()',
+        'testLastKey': 'lastKey()',
         'pollFirstEntry()': 'pollFirstEntry()',
+        'testPollFirstEntry': 'pollFirstEntry()',
         'pollLastEntry()': 'pollLastEntry()',
-        # views
+        'testPollLastEntry': 'pollLastEntry()',
+
+        # views & submaps
         'entrySet()': 'entrySet()',
+        'testEntrySet': 'entrySet()',
         'entrySet().iterator()': 'entrySet().iterator()',
+        'testEntrySetIterator': 'entrySet().iterator()',
         'keySet()': 'keySet()',
+        'testKeySet': 'keySet()',
         'keySet().iterator()': 'keySet().iterator()',
+        'testKeySetIterator': 'keySet().iterator()',
         'values()': 'values()',
+        'testValues': 'values()',
         'values().iterator()': 'values().iterator()',
+        'testValuesIterator': 'values().iterator()',
         'navigableKeySet()': 'navigableKeySet()',
+        'testNavigableKeySet': 'navigableKeySet()',
         'navigableKeySet().iterator()': 'navigableKeySet().iterator()',
+        'testNavigableKeySetIterator': 'navigableKeySet().iterator()',
         'navigableKeySet().descendingIterator()': 'navigableKeySet().descendingIterator()',
+        'testNavigableKeySetDescendingIterator': 'navigableKeySet().descendingIterator()',
         'descendingKeySet()': 'descendingKeySet()',
+        'testDescendingKeySet': 'descendingKeySet()',
         'descendingKeySet().iterator()': 'descendingKeySet().iterator()',
+        'testDescendingKeySetIterator': 'descendingKeySet().iterator()',
         'descendingMap()': 'descendingMap()',
+        'testDescendingMap': 'descendingMap()',
         'descendingMap().entrySet().iterator()': 'descendingMap().entrySet().iterator()',
-        # submaps
+        'testDescendingMapEntrySetIterator': 'descendingMap().entrySet().iterator()',
+
+        # submaps & ranges
         'headMap(final K toKey)': 'headMap(K)',
+        'testHeadMapOneArg': 'headMap(K)',
         'headMap(final K toKey, final boolean inclusive)': 'headMap(K, boolean)',
+        'testHeadMapTwoArgs': 'headMap(K, boolean)',
         'headMap(final K toKey).entrySet().iterator()': 'headMap(K).iterator()',
+        'testHeadMapIterator': 'headMap().iterator()',
+
         'tailMap(final K fromKey)': 'tailMap(K)',
+        'testTailMapOneArg': 'tailMap(K)',
         'tailMap(final K fromKey, final boolean inclusive)': 'tailMap(K, boolean)',
+        'testTailMapTwoArgs': 'tailMap(K, boolean)',
         'tailMap(final K fromKey).entrySet().iterator()': 'tailMap(K).iterator()',
+        'testTailMapIterator': 'tailMap().iterator()',
+
         'subMap(final K fromKey, final K toKey)': 'subMap(K, K)',
+        'testSubMapTwoArgs': 'subMap(K, K)',
         'subMap(final K fromKey, final boolean fromInclusive, final K toKey, final boolean toInclusive)': 'subMap(K, boolean, K, boolean)',
+        'testSubMapFourArgs': 'subMap(K, boolean, K, boolean)',
         'subMap(final K fromKey, final K toKey).entrySet().iterator()': 'subMap(K, K).entrySet().iterator()',
+        'testSubMapIterator': 'subMap().iterator()',
         'subMap(final K fromKey, final K toKey).keySet().iterator()': 'subMap(K, K).keySet().iterator()',
+        'testSubMapKeySetIterator': 'subMap().keySet().iterator()',
         'subMap(final K fromKey, final K toKey).values().iterator()': 'subMap(K, K).values().iterator()',
+        'testSubMapValuesIterator': 'subMap().values().iterator()',
     }
+
     if n in aliases:
         return aliases[n]
+
+    # Handle direct test method names if unmapped
+    if n.startswith('test'):
+        return n[4:]
+
     # fallback: strip "final " noise for a readable key
     return re.sub(r'\bfinal\s+', '', n)
 
@@ -141,6 +210,9 @@ def load_csv(filepath):
     score_col = score_col[0]
 
     df[bench_col] = df[bench_col].astype(str).str.strip().str.strip('"')
+    # Extract short class/method name if fully qualified package string is present
+    df[bench_col] = df[bench_col].str.split('.').str[-1]
+
     df[size_col] = pd.to_numeric(df[size_col], errors='coerce')
     df[score_col] = pd.to_numeric(df[score_col], errors='coerce')
     df = df.dropna(subset=[size_col, score_col])
@@ -162,9 +234,9 @@ def format_y_axis(value, pos):
     if value == 0:
         return '0'
     if abs(value) >= 1_000_000:
-        return f'{value/1_000_000:,.2f}M'
+        return f'{value / 1_000_000:,.2f}M'
     if abs(value) >= 1_000:
-        return f'{value/1_000:,.2f}k'
+        return f'{value / 1_000:,.2f}k'
     return f'{value:,.2f}'
 
 

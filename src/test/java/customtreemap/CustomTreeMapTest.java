@@ -1984,5 +1984,4 @@ class CustomTreeMapTest {
         assertEquals(30, tail.first());
         assertEquals(10, tail.last());
     }
-
 }

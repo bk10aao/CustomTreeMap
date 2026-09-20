@@ -19,6 +19,7 @@ import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
+import org.openjdk.jmh.runner.options.TimeValue;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -36,10 +37,10 @@ import java.util.concurrent.TimeUnit;
 
 @SuppressWarnings("unused")
 @State(Scope.Benchmark)
+@Warmup(iterations = 5, time = 1)
+@Measurement(iterations = 10, time = 1)
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
-@Warmup(iterations = 2, time = 500, timeUnit = TimeUnit.MILLISECONDS)
-@Measurement(iterations = 3, time = 500, timeUnit = TimeUnit.MILLISECONDS)
 @Fork(1)
 public class TreeMapPerformanceTest {
 
@@ -55,7 +56,6 @@ public class TreeMapPerformanceTest {
     private int index;
 
     private Integer minKey;
-    private Integer maxKey;
     private Integer midKey;
 
     @Setup(Level.Trial)
@@ -76,7 +76,7 @@ public class TreeMapPerformanceTest {
         }
 
         minKey = populatedSortedMap.firstKey();
-        maxKey = populatedSortedMap.lastKey();
+        Integer maxKey = populatedSortedMap.lastKey();
         List<Integer> sortedList = new ArrayList<>(populatedSortedMap.keySet());
         midKey = sortedList.get(size / 2);
 
@@ -404,14 +404,17 @@ public class TreeMapPerformanceTest {
 
     public static void main(String[] args) throws RunnerException {
         Options opt = new OptionsBuilder()
-                .include(TreeMapPerformanceTest.class.getSimpleName())
-                .measurementIterations(3)
-                .warmupIterations(2)
+                .include(TreeMapPerformanceTest.class.getName() + ".*")
                 .forks(1)
-                .result("TreeMap_performance_results.csv")
+                .warmupIterations(5)
+                .warmupTime(TimeValue.seconds(1))
+                .measurementIterations(10)
+                .measurementTime(TimeValue.seconds(1))
+                .mode(Mode.AverageTime)
+                .timeUnit(TimeUnit.NANOSECONDS)
+                .result("treemap-results.csv")
                 .resultFormat(ResultFormatType.CSV)
                 .build();
-
         Collection<RunResult> results = new Runner(opt).run();
         writeCustomCsv(results);
     }
