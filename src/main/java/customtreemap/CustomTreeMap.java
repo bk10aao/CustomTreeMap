@@ -2366,8 +2366,7 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
          * @return a {@link DescendingSubMap} over the same absolute range
          */
         public NavigableMap<K, V> descendingMap() {
-            NavigableMap<K, V> view = descendingMapView;
-            return view != null ? view
+            return descendingMapView != null ? descendingMapView
                     : (descendingMapView = new DescendingSubMap<>(m, fromStart, lo, loInclusive, toEnd, hi, hiInclusive));
         }
 
