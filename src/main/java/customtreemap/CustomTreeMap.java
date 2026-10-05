@@ -259,7 +259,8 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
     public NavigableMap<K, V> descendingMap() {
         NavigableMap<K, V> view = descendingMapView;
         return view != null ? view
-                : (descendingMapView = new DescendingSubMap<>(this, true, null, true, true, null, true));
+                : (descendingMapView = new DescendingSubMap<>(this, true, null,
+                true, true, null, true));
     }
 
     /**
@@ -2662,9 +2663,8 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
          * {@inheritDoc}
          */
         public Iterator<E> descendingIterator() {
-            return map instanceof CustomTreeMap
-                    ? ((CustomTreeMap<E, Object>) map).descendingKeyIterator()
-                    : ((NavigableSubMap<E, Object>) map).descendingKeyIterator();
+            return map instanceof CustomTreeMap ? ((CustomTreeMap<E, Object>) map).descendingKeyIterator()
+                                                : ((NavigableSubMap<E, Object>) map).descendingKeyIterator();
         }
 
         /**
@@ -2725,9 +2725,8 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
          * @return an iterator over the keys in this set
          */
         public Iterator<E> iterator() {
-            return map instanceof CustomTreeMap
-                    ? ((CustomTreeMap<E, Object>) map).keyIterator()
-                    : ((NavigableSubMap<E, Object>) map).keyIterator();
+            return map instanceof CustomTreeMap ? ((CustomTreeMap<E, Object>) map).keyIterator()
+                                                : ((NavigableSubMap<E, Object>) map).keyIterator();
         }
 
         /**

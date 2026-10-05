@@ -1,4 +1,4 @@
-# Custom Linked HashMap
+# Custom TreeMap
 
 An implementation of a Java TreeMap using a Red-Black Tree.
 
