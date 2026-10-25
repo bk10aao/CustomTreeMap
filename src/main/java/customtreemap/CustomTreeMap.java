@@ -584,6 +584,8 @@ public class CustomTreeMap<K extends Comparable<K>, V> extends AbstractMap<K, V>
      */
     @Override
     public void putAll(final Map<? extends K, ? extends V> map) {
+        if(map.isEmpty())
+            return;
         int mapSize = map.size();
         if (size == 0 && mapSize != 0 && map instanceof SortedMap
                 && Objects.equals(comparator, ((SortedMap<?, ?>) map).comparator())) {
